@@ -1,42 +1,10 @@
-import { Outlet } from 'react-router-dom'
-import {SiteSettingsProvider} from '../../context/SiteSettingsContext.jsx'
-import useSiteSettings from '../../hooks/useSiteSettings.js'
+import {Outlet} from 'react-router-dom'
 import Seo from '../seo/Seo.jsx'
-import PageLoadingState from './PageLoadingState.jsx'
-import SiteHeader from './SiteHeader.jsx'
 import SiteFooter from './SiteFooter.jsx'
-import ScrollToTopButton from './ScrollToTopButton.jsx'
+import SiteHeader from './SiteHeader.jsx'
 
 function AppShell() {
-  return (
-    <SiteSettingsProvider>
-      <AppShellContent />
-    </SiteSettingsProvider>
-  )
-}
-
-function AppShellContent() {
-  const {status, error, retry} = useSiteSettings()
-
-  if (status === 'idle' || status === 'loading') {
-    return <PageLoadingState />
-  }
-
-  if (status === 'error') {
-    return <PageLoadingState error={error} onRetry={retry} />
-  }
-
-  return (
-    <div className="min-h-[100dvh] w-full">
-      <Seo />
-      <SiteHeader />
-      <main id="main-content">
-        <Outlet />
-      </main>
-      <SiteFooter />
-      <ScrollToTopButton />
-    </div>
-  )
+  return <div className="min-h-[100dvh] w-full"><Seo /><SiteHeader /><main id="main-content"><Outlet /></main><SiteFooter /></div>
 }
 
 export default AppShell

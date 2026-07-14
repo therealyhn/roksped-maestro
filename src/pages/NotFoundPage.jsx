@@ -1,28 +1,7 @@
 import {Link} from 'react-router-dom'
-import Container from '../components/layout/Container.jsx'
-import Section from '../components/layout/Section.jsx'
-import useSiteSettings from '../hooks/useSiteSettings.js'
 
 function NotFoundPage() {
-  const {data} = useSiteSettings()
-  const content = data.notFound
-
-  if (!content) {
-    return null
-  }
-
-  return (
-    <Section aria-labelledby="not-found-title" className="min-h-[70dvh]" data-page="not-found">
-      <Container className="flex min-h-[70dvh] items-center justify-center py-28 text-center">
-        <div className="max-w-2xl">
-          <p aria-hidden="true" className="font-wordmark text-[clamp(5rem,18vw,13rem)] leading-none tracking-[-0.1em] text-brand-structure">404</p>
-          <h1 className="mt-2 text-display font-medium text-brand-ink" id="not-found-title">{content.title}</h1>
-          {content.description ? <p className="mx-auto mt-5 max-w-xl text-body-lg text-brand-body-muted">{content.description}</p> : null}
-          {content.actionLabel ? <Link className="mt-8 inline-flex rounded-button bg-brand-ink px-6 py-3 text-sm text-white transition-transform hover:-translate-y-px" to="/">{content.actionLabel}</Link> : null}
-        </div>
-      </Container>
-    </Section>
-  )
+  return <section className="grid min-h-[70dvh] place-items-center bg-brand-canvas px-gutter-fluid py-32 text-center"><div><p className="text-[15px] text-brand-body-muted">404</p><h1 className="mt-3 text-[55px] font-medium leading-none tracking-display">Stranica nije pronađena</h1><p className="mt-5 text-brand-body-muted">Tražena stranica ne postoji.</p><Link className="mt-8 inline-flex h-[43px] items-center rounded-button bg-brand-ink px-[18px] text-[15px] text-white" to="/">Početna</Link></div></section>
 }
 
 export default NotFoundPage

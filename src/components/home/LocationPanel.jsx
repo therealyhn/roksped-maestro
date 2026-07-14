@@ -1,0 +1,12 @@
+import {Link} from 'react-router-dom'
+import FigmaArrow from '../ui/FigmaArrow.jsx'
+
+const figmaLocationIcon = '/assets/shared/location-pin.svg'
+
+function LocationPanel({location, section}) {
+  const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location.address)}`
+
+  return <div aria-labelledby={`location-tab-${location.id}`} className="relative min-h-[418px]" id={`location-panel-${location.id}`} role="tabpanel" tabIndex="0"><div className="mt-[58px] flex items-center gap-[9px] lg:absolute lg:left-0 lg:top-[60px] lg:mt-0"><span className="grid size-[27px] place-items-center rounded-detail bg-brand-ink"><img alt="" aria-hidden="true" className="size-[25px]" src={figmaLocationIcon} /></span><p className="text-[18px] leading-[1.4] tracking-[-0.01em]">{location.address}</p></div><div className="mt-10 grid gap-7 sm:grid-cols-2 lg:absolute lg:left-0 lg:top-[127px] lg:mt-0 lg:w-[596px] lg:grid-cols-[266px_266px] lg:gap-x-[64px]">{location.contacts.map((contact) => <div key={contact.name}><p className="text-[18px] font-medium leading-[1.4] tracking-[-0.01em]">{contact.name}{contact.role ? <span className="font-normal italic text-brand-mid-neutral">, {contact.role}</span> : null}</p><a className="block text-[18px] leading-[1.4] tracking-[-0.01em]" href={`tel:${contact.phone.replace(/\s/g, '')}`}>{contact.phone}</a>{contact.email ? <a className="block text-[18px] leading-[1.4] tracking-[-0.01em]" href={`mailto:${contact.email}`}>{contact.email}</a> : null}</div>)}</div><div className="mt-7 lg:absolute lg:left-0 lg:top-[232px] lg:mt-0"><p className="text-[18px] font-medium leading-[1.4] tracking-[-0.01em]">{section.officeContactsLabel}</p>{location.officeEmails.map((email) => <a className="block text-[18px] leading-[1.4] tracking-[-0.01em]" href={`mailto:${email}`} key={email}>{email}</a>)}</div><a className="mt-8 inline-flex h-[43px] items-center gap-2.5 rounded-button bg-brand-ink px-[18px] text-[15px] text-white lg:absolute lg:left-[330px] lg:top-[295px] lg:mt-0" href={mapUrl} rel="noreferrer" target="_blank"><span>{section.mapCtaLabel}</span><span className="grid size-[19px] place-items-center rounded-full bg-brand-signal-yellow"><FigmaArrow className="size-[9px]" direction="dark" /></span></a><p className="mt-12 text-[18px] leading-[1.4] tracking-[-0.01em] lg:absolute lg:left-0 lg:top-[394px] lg:mt-0">{section.prompt}<br /><Link className="font-semibold italic underline" to="/kontakt">{section.promptLink}</Link> {section.promptSuffix}</p></div>
+}
+
+export default LocationPanel

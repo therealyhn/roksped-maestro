@@ -1,2 +1,0 @@
-import {defineField, defineType} from 'sanity'
-export const faqItem = defineType({name: 'v4.faqItem', title: 'v4 FAQ stavka', type: 'document', fields: [defineField({name: 'question', title: 'Pitanje', type: 'string', validation: (Rule) => Rule.required()}), defineField({name: 'answer', title: 'Odgovor', type: 'array', of: [{type: 'block'}], validation: (Rule) => Rule.required()}), defineField({name: 'displayOrder', title: 'Redosled', type: 'number'})]})

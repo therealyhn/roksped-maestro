@@ -1,13 +1,19 @@
 {
   "fileKey": "VM4968CmJUoMLzc6b3NGHx",
-  "source": "Figma Dev Mode export URLs are temporary; durable assets are referenced from the existing Sanity production dataset during the v4 seed.",
+  "source": "Figma Dev Mode export URLs are temporary visual references for the static site and must be replaced with durable local files before production.",
   "assets": [
-    {"node": "126:167", "figmaAsset": "imgBackground2", "destination": "v4.homePage.hero.fallbackImage", "role": "editorial-fallback"},
-    {"node": "126:167", "figmaAsset": "imgBackground", "destination": "v4.homePage.aboutTeaser.media", "role": "editorial"},
-    {"node": "181:951", "figmaAsset": "imgRectangle5453", "destination": "v4.aboutPage.hero.image", "role": "editorial"},
-    {"node": "181:951", "figmaAsset": "imgRectangle5441", "destination": "v4.aboutPage.teamIntro.image", "role": "editorial"},
-    {"node": "388:754", "figmaAsset": "imgPexelsJonathanborba338245961", "destination": "v4.servicesPage.hero.fallbackImage", "role": "editorial-fallback"},
-    {"node": "126:167", "figmaAsset": "img1..img5", "destination": "v4.partner[].logo", "role": "client-logo"},
+    {"node": "126:167", "figmaAsset": "imgBackground2", "destination": "public/assets/home/hero-fallback", "role": "editorial-fallback"},
+    {"node": "126:167", "figmaAsset": "imgBackground", "destination": "public/assets/home/about-teaser", "role": "editorial"},
+    {"node": "181:951", "figmaAsset": "imgRectangle5441", "destination": "public/assets/about/hero-background.jpg", "role": "editorial"},
+    {"node": "181:951", "figmaAsset": "imgRectangle5453", "destination": "public/assets/about/team-intro.jpg", "role": "editorial"},
+    {"node": "181:951", "figmaAsset": "Tim komponent", "destination": "public/assets/about/team-strip.png", "role": "component-state"},
+    {"node": "181:951", "figmaAsset": "stairs/heart/headphones", "destination": "public/assets/about", "role": "fixed-section-visuals"},
+    {"node": "378:750", "figmaAsset": "imgPexelsJonathanborba338245961", "destination": "public/assets/services/hero-background.png", "role": "editorial-fallback"},
+    {"node": "410:1126", "figmaAsset": "imgGroup10", "destination": "public/assets/services/cta-mark.svg", "role": "fixed-section-visual"},
+    {"node": "399:2539", "figmaAsset": "imgFeatures", "destination": "public/assets/shared/locations-map.svg", "role": "fixed-section-visual"},
+    {"node": "399:2539", "figmaAsset": "imgCarbonLocationFilled", "destination": "public/assets/shared/location-pin.svg", "role": "fixed-ui-vector"},
+    {"node": "410:1144", "figmaAsset": "imgGroup4", "destination": "public/assets/shared/arrow-dark.svg", "role": "fixed-ui-vector"},
+    {"node": "126:167", "figmaAsset": "img1..img5", "destination": "public/assets/partners", "role": "client-logo"},
     {"node": "126:167", "figmaAsset": "imgLogoIGydOUrT11", "destination": "code-owned logo", "role": "fixed-brand-vector"},
     {"node": "126:167", "figmaAsset": "imgGroup4/imgGroup9", "destination": "code-owned CTA icons", "role": "fixed-ui-vector"}
   ]

@@ -1,13 +1,13 @@
-import Container from '../components/layout/Container.jsx'
-import Section from '../components/layout/Section.jsx'
+import ContactLocationsSection from '../components/contact/ContactLocationsSection.jsx'
+import ContactTopSection from '../components/contact/ContactTopSection.jsx'
+import {contactFigmaContent} from '../data/contactFigmaContent.js'
 
 function ContactPage() {
   return (
-    <Section aria-label="Kontakt" data-page="contact">
-      <Container>
-        {import.meta.env.DEV ? <p>Kontakt — development shell</p> : null}
-      </Container>
-    </Section>
+    <>
+      <ContactTopSection form={contactFigmaContent.form} intro={contactFigmaContent.intro} />
+      <ContactLocationsSection section={contactFigmaContent.locations} />
+    </>
   )
 }
 
