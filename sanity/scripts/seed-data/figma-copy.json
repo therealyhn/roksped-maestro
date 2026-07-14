@@ -1,0 +1,11 @@
+{
+  "source": "Figma nodes 126:167, 181:951, 399:2416 and 388:754, extracted 2026-07-14",
+  "home": {
+    "hero": "Pouzdana podrška međunarodnoj trgovini",
+    "servicesHeading": "Savremena logistička rešenja za sigurno i efikasno poslovanje.",
+    "faqQuestions": ["Koje vrste transporta organizujete?", "Da li pružate usluge carinskog posredovanja?", "Da li nudite usluge skladištenja robe?", "Kako mogu da zatražim ponudu?"]
+  },
+  "about": {"heading": "Pokrećemo robu. Olakšavamo trgovinu.", "processHeading": "Četiri koraka do rešenja"},
+  "contact": {"heading": "Započnite razgovor sa našim timom.", "serviceOptions": ["Zahtev za ponudu", "Transport robe", "Carinsko posredovanje", "Skladištenje robe", "Poslovna saradnja", "Ostalo"]},
+  "services": {"closingHeading": "Spremni za početak saradnje?"}
+}

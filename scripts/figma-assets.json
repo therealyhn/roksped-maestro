@@ -1,0 +1,14 @@
+{
+  "fileKey": "VM4968CmJUoMLzc6b3NGHx",
+  "source": "Figma Dev Mode export URLs are temporary; durable assets are referenced from the existing Sanity production dataset during the v4 seed.",
+  "assets": [
+    {"node": "126:167", "figmaAsset": "imgBackground2", "destination": "v4.homePage.hero.fallbackImage", "role": "editorial-fallback"},
+    {"node": "126:167", "figmaAsset": "imgBackground", "destination": "v4.homePage.aboutTeaser.media", "role": "editorial"},
+    {"node": "181:951", "figmaAsset": "imgRectangle5453", "destination": "v4.aboutPage.hero.image", "role": "editorial"},
+    {"node": "181:951", "figmaAsset": "imgRectangle5441", "destination": "v4.aboutPage.teamIntro.image", "role": "editorial"},
+    {"node": "388:754", "figmaAsset": "imgPexelsJonathanborba338245961", "destination": "v4.servicesPage.hero.fallbackImage", "role": "editorial-fallback"},
+    {"node": "126:167", "figmaAsset": "img1..img5", "destination": "v4.partner[].logo", "role": "client-logo"},
+    {"node": "126:167", "figmaAsset": "imgLogoIGydOUrT11", "destination": "code-owned logo", "role": "fixed-brand-vector"},
+    {"node": "126:167", "figmaAsset": "imgGroup4/imgGroup9", "destination": "code-owned CTA icons", "role": "fixed-ui-vector"}
+  ]
+}

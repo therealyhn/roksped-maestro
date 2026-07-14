@@ -1,0 +1,1 @@
+export const homePageQuery = '*[_id == "v4-home-page"][0]{..., "services": servicesIntro.services[]->{...}, "testimonials": testimonialShowcase.testimonials[]->{...}, "locations": locationsTeaser.locations[]->{...}, "faqItems": faq.items[]->{...}}'

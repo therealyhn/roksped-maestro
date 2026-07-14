@@ -1,0 +1,6 @@
+import {defineField, defineType} from 'sanity'
+const urlRule = (Rule) => Rule.uri({scheme: ['http', 'https']})
+export const location = defineType({name: 'v4.location', title: 'v4 Lokacija', type: 'document', fields: [
+  defineField({name: 'slug', title: 'Stabilni slug', type: 'slug', options: {source: 'name'}, validation: (Rule) => Rule.required()}), defineField({name: 'name', title: 'Naziv', type: 'string', validation: (Rule) => Rule.required()}), defineField({name: 'address', title: 'Adresa', type: 'array', of: [{type: 'string'}]}), defineField({name: 'mapUrl', title: 'Mapa', type: 'url', validation: urlRule}),
+  defineField({name: 'coordinates', title: 'Koordinate', type: 'geopoint'}), defineField({name: 'contacts', title: 'Kontakti', type: 'array', of: [{type: 'object', fields: [defineField({name: 'name', title: 'Ime', type: 'string'}), defineField({name: 'phone', title: 'Telefon', type: 'string'}), defineField({name: 'email', title: 'Email', type: 'string', validation: (Rule) => Rule.email()})]}]}), defineField({name: 'officeEmails', title: 'Email adrese', type: 'array', of: [{type: 'string', validation: (Rule) => Rule.email()}]}), defineField({name: 'displayOrder', title: 'Redosled', type: 'number'}),
+]})

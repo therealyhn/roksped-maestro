@@ -1,9 +1,129 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [],
+  content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
-    extend: {},
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: '1.25rem',
+        md: '2rem',
+        xl: '4.5rem',
+      },
+      screens: {
+        '2xl': '1440px',
+      },
+    },
+    extend: {
+      colors: {
+        brand: {
+          canvas: '#F7F7F7',
+          ink: '#111111',
+          footer: '#181818',
+          night: '#050419',
+          'signal-yellow': '#FFF112',
+          'logistics-green': '#00A85A',
+          'bright-green': '#00B862',
+          'body-muted': '#585765',
+          'footer-muted': '#8F9FA3',
+          structure: '#E6E6E8',
+          'soft-neutral': '#D9D9D9',
+          'mid-neutral': '#7D7D7D',
+          'deep-green': '#1B2323',
+          glass: 'rgb(255 255 255 / 0.2)',
+          'hero-scrim': 'rgb(0 0 0 / 0.3)',
+          'footer-mark': 'rgb(255 255 255 / 0.4)',
+        },
+        source: {
+          charcoal: '#222222',
+          'feature-shadow': '#24262B',
+          'services-green': '#1A7340',
+          'services-blue': '#001354',
+          'services-navy': '#010D3E',
+          'metadata-muted': '#7B7B7B',
+          'input-border': '#B3B2B9',
+          'input-border-alt': '#B2B1B8',
+          placeholder: '#BABABA',
+          'neutral-light': '#E4E4E4',
+        },
+      },
+      fontFamily: {
+        sans: ['Roboto Variable', 'Arial', 'sans-serif'],
+        display: ['Roboto Variable', 'Arial', 'sans-serif'],
+        wordmark: ['Poppins', 'Arial', 'sans-serif'],
+      },
+      fontSize: {
+        micro: ['0.625rem', { lineHeight: '1.3' }],
+        caption: ['0.75rem', { lineHeight: '1.3' }],
+        'label-xs': ['0.8125rem', { lineHeight: '1.3' }],
+        label: ['0.875rem', { lineHeight: '1.3' }],
+        'body-xs': ['0.9375rem', { lineHeight: '1.45' }],
+        body: ['1rem', { lineHeight: '1.5' }],
+        'body-lg': ['1.125rem', { lineHeight: '1.5' }],
+        'body-xl': ['1.1875rem', { lineHeight: '1.45' }],
+        'title-xs': ['1.25rem', { lineHeight: '1.2', letterSpacing: '-0.03em' }],
+        'title-sm': ['1.3125rem', {
+          lineHeight: '1.2',
+          letterSpacing: '-0.03em',
+        }],
+        title: ['1.375rem', { lineHeight: '1.2', letterSpacing: '-0.03em' }],
+        'title-lg': ['1.5rem', { lineHeight: '1.15', letterSpacing: '-0.03em' }],
+        'heading-sm': ['2rem', { lineHeight: '1.08', letterSpacing: '-0.04em' }],
+        'heading-md': ['2.5625rem', {
+          lineHeight: '1.04',
+          letterSpacing: '-0.04em',
+        }],
+        'heading-lg': ['3rem', { lineHeight: '1', letterSpacing: '-0.04em' }],
+        display: ['3.4375rem', { lineHeight: '0.98', letterSpacing: '-0.05em' }],
+        'display-lg': ['3.9375rem', {
+          lineHeight: '0.96',
+          letterSpacing: '-0.05em',
+        }],
+        'display-xl': ['4.8125rem', {
+          lineHeight: '0.94',
+          letterSpacing: '-0.05em',
+        }],
+        'display-2xl': ['5rem', { lineHeight: '0.92', letterSpacing: '-0.05em' }],
+        'wordmark-sm': ['23.6875rem', {
+          lineHeight: '0.8',
+          letterSpacing: '-0.06em',
+        }],
+        wordmark: ['30.625rem', { lineHeight: '0.8', letterSpacing: '-0.06em' }],
+      },
+      letterSpacing: {
+        title: '-0.03em',
+        display: '-0.05em',
+      },
+      borderRadius: {
+        detail: '5px',
+        input: '10px',
+        card: '17px',
+        'card-lg': '20px',
+        selector: '22px',
+        feature: '34px',
+        'feature-alt': '35px',
+        media: '37px',
+        showcase: '43px',
+        'showcase-lg': '46px',
+        button: '63px',
+        navigation: '123px',
+        'media-pill': '203px',
+        orb: '287px',
+      },
+      boxShadow: {
+        navigation: '0 0 62.6px 0 rgb(0 0 0 / 0.09)',
+        feature: '0 7px 24px 0 #24262B',
+      },
+      maxWidth: {
+        content: '81rem',
+      },
+      width: {
+        canvas: '90rem',
+      },
+      spacing: {
+        gutter: '4.5rem',
+        'gutter-fluid': 'clamp(1.25rem, 5vw, 4.5rem)',
+      },
+    },
   },
   plugins: [],
 }
-
