@@ -8,7 +8,7 @@ function AboutFeatureCard({card}) {
   return (
     <article className="relative h-[382px] w-[345px] shrink-0 overflow-hidden rounded-card-lg border border-[rgb(27_27_27_/_0.08)] bg-brand-canvas shadow-[0_7px_24px_rgb(36_38_43_/_0.14)]">
       <div className={`absolute ${iconGeometry[card.key]}`}>
-        <img alt="" aria-hidden="true" className="absolute inset-0 size-full object-cover [filter:url('#about-green-tint')]" src={card.image} />
+        <img alt="" aria-hidden="true" className="absolute inset-0 size-full object-cover [filter:url('#about-green-tint')]" decoding="async" loading="lazy" src={card.image} />
       </div>
 
       <h3 className="absolute inset-x-0 top-[229px] text-center text-[22px] font-semibold leading-[23px] tracking-[-0.03em] text-source-services-navy">{card.title}</h3>

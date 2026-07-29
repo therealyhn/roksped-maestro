@@ -1,6 +1,6 @@
 export const servicesFigmaContent = Object.freeze({
   hero: {
-    image: '/assets/services/hero-background.png',
+    image: '/assets/services/hero-background.webp',
     imageAlt: 'Aerodromska logistika sa teretnim vozilima i transportnim timom',
     hotspots: [
       {key: 'transport', label: 'Transport', left: 422, top: 215},
