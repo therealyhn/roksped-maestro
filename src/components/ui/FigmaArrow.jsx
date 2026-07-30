@@ -1,6 +1,10 @@
-function FigmaArrow({direction = 'right', className = 'size-[15px]'}) {
+function FigmaArrow({direction = 'right', tone: requestedTone, className = 'size-[15px]'}) {
   const rotation = direction === 'left' ? 'rotate-180' : ''
-  const tone = direction === 'dark' ? 'text-brand-ink' : 'text-brand-signal-yellow'
+  const tone = requestedTone === 'white'
+    ? 'text-white'
+    : requestedTone === 'dark' || direction === 'dark'
+      ? 'text-brand-ink'
+      : 'text-brand-signal-yellow'
 
   return (
     <svg

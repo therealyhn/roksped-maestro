@@ -1,42 +1,73 @@
+import {motion} from 'framer-motion'
+import useCircularCarousel from '../../hooks/useCircularCarousel.js'
+import useReducedMotionPreference from '../../hooks/useReducedMotionPreference.js'
+import getCircularOffset from '../../lib/motion/getCircularOffset.js'
 import FigmaArrow from '../ui/FigmaArrow.jsx'
+import TestimonialCircle from './TestimonialCircle.jsx'
+import TestimonialWordmarkMarquee from './TestimonialWordmarkMarquee.jsx'
 
 function HomeTestimonialsSection({showcase}) {
+  const prefersReducedMotion = useReducedMotionPreference()
+  const {activeIndex, showNext, showPrevious} = useCircularCarousel(showcase.items.length)
+  const activeTestimonial = showcase.items[activeIndex]
+  const backgroundColor = activeTestimonial.theme === 'yellow' ? '#D2FF72' : '#00A85A'
+
   return (
-    <section className="relative h-[760px] overflow-hidden bg-brand-logistics-green" aria-labelledby="home-testimonials-heading">
-      <div aria-hidden="true" className="absolute left-0 top-[144px] whitespace-nowrap font-display text-[490px] font-medium leading-[.82] tracking-[-0.08em] text-white/10">schwing</div>
+    <motion.section
+      animate={{backgroundColor}}
+      aria-labelledby="home-testimonials-heading"
+      className="relative h-[820px] overflow-hidden lg:h-[760px]"
+      id="testimonials"
+      initial={false}
+      transition={prefersReducedMotion ? {duration: 0} : {duration: 0.55, ease: [0.76, 0, 0.24, 1]}}
+    >
+      <TestimonialWordmarkMarquee
+        key={activeTestimonial.id}
+        prefersReducedMotion={prefersReducedMotion}
+        text={activeTestimonial.wordmark}
+      />
 
-      <div className="absolute left-[72px] top-[293px] z-10 w-[350px]">
-        <h2 className="text-[48px] font-medium leading-[.96] tracking-[-0.05em]" id="home-testimonials-heading">{showcase.heading}</h2>
+      <div className="absolute left-5 top-20 z-10 w-[290px] lg:left-[72px] lg:top-[293px] lg:w-[350px]">
+        <h2 className="text-[42px] font-medium leading-[.96] tracking-[-0.05em] lg:text-[48px]" id="home-testimonials-heading">
+          {showcase.heading}
+        </h2>
       </div>
 
-      <div className="absolute left-[72px] top-[420px] z-10 flex gap-[6px]">
-        <button aria-label="Prethodno iskustvo klijenta" className="grid size-[43px] place-items-center rounded-detail bg-brand-ink" type="button"><FigmaArrow direction="left" /></button>
-        <button aria-label="Sledeće iskustvo klijenta" className="grid size-[43px] place-items-center rounded-detail bg-brand-ink" type="button"><FigmaArrow /></button>
+      <div className="absolute left-5 top-[190px] z-10 flex gap-[6px] lg:left-[72px] lg:top-[420px]">
+        <button
+          aria-label="Prikaži sledeće iskustvo klijenta"
+          className="grid size-[43px] place-items-center rounded-detail bg-brand-ink transition-transform duration-200 hover:scale-[1.06] focus-visible:scale-[1.06]"
+          onClick={showNext}
+          type="button"
+        >
+          <FigmaArrow direction="left" tone="white" />
+        </button>
+        <button
+          aria-label="Prikaži prethodno iskustvo klijenta"
+          className="grid size-[43px] place-items-center rounded-detail bg-brand-ink transition-transform duration-200 hover:scale-[1.06] focus-visible:scale-[1.06]"
+          onClick={showPrevious}
+          type="button"
+        >
+          <FigmaArrow tone="white" />
+        </button>
       </div>
 
-      <article className="absolute left-[804px] top-[130px] size-[499px] overflow-hidden rounded-full text-center text-white">
-        <img alt="" aria-hidden="true" className="absolute inset-0 h-full w-full object-cover" decoding="async" height="998" loading="lazy" src="/assets/home/testimonial-schwing.jpg" width="665" />
-        <div className="absolute inset-0 bg-black/55" />
-        <div className="absolute left-[212px] top-[115px] grid size-[75px] place-items-center rounded-input bg-brand-signal-yellow">
-          <img alt="Schwing Stetter" className="h-[19px] w-[58px] object-contain" src="/assets/home/client-schwing-stetter.png" />
-        </div>
-        <blockquote className="absolute left-[72px] top-[238px] w-[354px] text-[20px] leading-[1.3] tracking-[-0.01em]">{showcase.quote}</blockquote>
-        <p className="absolute left-[110px] top-[350px] w-[279px] text-[13px] font-medium uppercase leading-none tracking-[0.01em]">{showcase.author}</p>
-      </article>
-
-      <div aria-hidden="true" className="absolute left-[1094px] top-[-226px] size-[346px] overflow-hidden rounded-full">
-        <img alt="" className="h-full w-full object-cover" decoding="async" height="665" loading="lazy" src="/assets/home/testimonial-horeca.jpg" width="998" />
-        <div className="absolute inset-0 bg-black/55" />
+      <div
+        aria-label={`Iskustvo klijenta ${activeIndex + 1} od ${showcase.items.length}`}
+        aria-live="polite"
+        className="absolute left-1/2 top-[405px] size-[min(82vw,499px)] -translate-x-1/2 [--testimonial-orbit-x:22vw] [--testimonial-orbit-y:300px] lg:left-auto lg:right-[9.5%] lg:top-1/2 lg:size-[499px] lg:translate-x-0 lg:-translate-y-1/2 lg:[--testimonial-orbit-x:205px] lg:[--testimonial-orbit-y:430px]"
+        role="region"
+      >
+        {showcase.items.map((item, itemIndex) => (
+          <TestimonialCircle
+            item={item}
+            key={item.id}
+            offset={getCircularOffset(itemIndex, activeIndex, showcase.items.length)}
+            prefersReducedMotion={prefersReducedMotion}
+          />
+        ))}
       </div>
-
-      <div aria-hidden="true" className="absolute left-[1094px] top-[639px] size-[346px] overflow-hidden rounded-full">
-        <img alt="" className="h-full w-full object-cover" decoding="async" height="665" loading="lazy" src="/assets/home/testimonial-horeca.jpg" width="998" />
-        <div className="absolute inset-0 bg-black/55" />
-        <div className="absolute left-[147px] top-[80px] grid size-[52px] place-items-center rounded-detail bg-brand-logistics-green">
-          <img alt="" className="h-auto w-[43px]" src="/assets/home/client-horeca.png" />
-        </div>
-      </div>
-    </section>
+    </motion.section>
   )
 }
 

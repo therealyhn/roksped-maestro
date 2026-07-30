@@ -60,3 +60,24 @@
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
+
+@keyframes mission-client-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes testimonial-wordmark-marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+.testimonial-wordmark-track {
+  animation: testimonial-wordmark-marquee 18s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-wordmark-track {
+    animation: none !important;
+    transform: none;
+  }
+}
