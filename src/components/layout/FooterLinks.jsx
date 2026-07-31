@@ -1,16 +1,16 @@
 import {Link} from 'react-router-dom'
 
 function FooterLinks({heading, links}) {
-  if (!heading || links.length === 0) {
-    return null
-  }
-
   return (
     <section>
-      <h2 className="text-[1.375rem] font-medium leading-[1.2] tracking-title text-white">{heading}</h2>
-      <ul className="mt-4 space-y-3 text-[15px] text-brand-footer-muted">
-        {links.map(({label, to}) => (
-          <li key={to}><Link className="transition-colors hover:text-white" to={to}>{label}</Link></li>
+      <h2 className="text-[20px] font-semibold leading-[.95]">{heading}</h2>
+      <ul className="mt-[17px] text-[14px] leading-[.95] text-brand-footer-muted">
+        {links.map((link) => (
+          <li key={link.to}>
+            <Link className="-mx-2 inline-flex min-h-11 items-center px-2 transition-colors hover:text-white xl:min-h-0 xl:py-[9px]" to={link.to}>
+              {link.label}
+            </Link>
+          </li>
         ))}
       </ul>
     </section>

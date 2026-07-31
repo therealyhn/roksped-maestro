@@ -9,9 +9,9 @@ function LocationsDisplay({section, className = ''}) {
   const activeLocation = section.items.find((location) => location.id === tabs.activeId) || section.items[0]
 
   return (
-    <div className={`h-auto bg-brand-canvas px-gutter-fluid lg:h-[617px] lg:overflow-hidden ${className}`}>
-      <div className="mx-auto grid max-w-content gap-[58px] lg:grid-cols-[492px_1fr]">
-        <div className="relative mt-8 h-[335px] overflow-hidden rounded-detail bg-[#181818] sm:h-[517px] lg:mt-[50px] lg:h-[517px]">
+    <div className={`h-auto bg-brand-canvas px-gutter-fluid xl:h-[617px] xl:overflow-hidden ${className}`}>
+      <div className="mx-auto grid max-w-content gap-10 xl:grid-cols-[492px_1fr] xl:gap-[58px]">
+        <div className="relative mt-8 h-[335px] overflow-hidden rounded-detail bg-[#181818] sm:h-[430px] xl:mt-[50px] xl:h-[517px]">
           <img alt="" aria-hidden="true" className="absolute left-[-412px] top-[-467px] h-[1712px] w-[1289px] max-w-none" src={mapAsset} />
           {section.items.map((location) => {
             const selected = location.id === tabs.activeId
@@ -27,7 +27,7 @@ function LocationsDisplay({section, className = ''}) {
             )
           })}
         </div>
-        <div className="mt-0 min-w-0 lg:mt-[74px]">
+        <div className="mt-0 min-w-0 xl:mt-[74px]">
           <LocationTabs activeId={tabs.activeId} locations={section.items} onKeyDown={tabs.onKeyDown} onSelect={tabs.select} />
           <LocationPanel location={activeLocation} section={section} />
         </div>

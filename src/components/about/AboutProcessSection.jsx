@@ -1,20 +1,49 @@
+import {useRef} from 'react'
+import useMediaQuery from '../../hooks/useMediaQuery.js'
+import usePinnedServiceReveal, {pinnedRevealTrackDistance} from '../../hooks/usePinnedServiceReveal.js'
+import useReducedMotionPreference from '../../hooks/useReducedMotionPreference.js'
 import AboutCta from './AboutCta.jsx'
+import AboutProcessStep from './AboutProcessStep.jsx'
 
 function AboutProcessSection({section}) {
-  return (
-    <section className="bg-brand-canvas px-5 py-20 lg:relative lg:h-[834px] lg:p-0" aria-labelledby="about-process-heading">
-      <div className="mx-auto flex max-w-[666px] flex-col items-center text-center lg:absolute lg:left-1/2 lg:top-[100px] lg:-translate-x-1/2">
-        <h2 id="about-process-heading" className="text-[42px] font-medium leading-none tracking-[-0.05em] lg:text-[55px]">{section.heading}</h2>
-        <p className="mt-5 max-w-[535px] text-[18px] leading-[31px] tracking-[0.01em]">{section.body}</p>
-        <AboutCta className="mt-8 lg:mt-8" to="/usluge">{section.ctaLabel}</AboutCta>
-      </div>
+  const trackRef = useRef(null)
+  const prefersReducedMotion = useReducedMotionPreference()
+  const isDesktop = useMediaQuery('(min-width: 1280px)')
+  const isStatic = prefersReducedMotion || !isDesktop
+  const scrollProgress = usePinnedServiceReveal(trackRef, isStatic)
 
-      <article className="relative mx-auto mt-20 size-[346px] max-w-full overflow-hidden rounded-full bg-brand-logistics-green text-center lg:absolute lg:left-[15px] lg:top-[438px] lg:mt-0">
-        <img alt="" aria-hidden="true" className="absolute left-[156px] top-[50px] size-[34px]" src="/assets/about/process-mark.svg" />
-        <h3 className="absolute left-[54px] top-[107px] w-[238px] text-[24px] font-bold leading-[1.1] tracking-[0.02em]">{section.firstStep.title}</h3>
-        <p className="absolute left-[42px] top-[177px] w-[263px] text-[14px] leading-[1.3] text-source-charcoal">{section.firstStep.body}</p>
-      </article>
-    </section>
+  return (
+    <div
+      className="relative w-full bg-brand-canvas"
+      ref={trackRef}
+      style={isStatic
+        ? undefined
+        : {height: `calc(max(100svh, 834px) + ${pinnedRevealTrackDistance}px)`}}
+    >
+      <section
+        aria-labelledby="about-process-heading"
+        className={`mx-auto min-h-[100svh] w-full max-w-canvas bg-brand-canvas px-5 py-20 xl:h-[100svh] xl:min-h-[834px] xl:p-0 ${isStatic ? 'xl:relative' : 'sticky top-0'}`}
+      >
+        <div className="mx-auto flex max-w-[666px] flex-col items-center text-center xl:absolute xl:left-1/2 xl:top-[100px] xl:-translate-x-1/2">
+          <h2 id="about-process-heading" className="text-[clamp(2.5rem,7.16vw,3.4375rem)] font-medium leading-none tracking-[-0.05em]">{section.heading}</h2>
+          <p className="mt-5 max-w-[535px] text-[18px] leading-[31px] tracking-[0.01em]">{section.body}</p>
+          <AboutCta className="mt-8" to="/usluge">{section.ctaLabel}</AboutCta>
+        </div>
+
+        <div className="-mx-5 mt-20 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 [scrollbar-width:none] xl:absolute xl:left-1/2 xl:top-[438px] xl:mx-0 xl:mt-0 xl:grid xl:w-[calc(100%-30px)] xl:max-w-[1410px] xl:-translate-x-1/2 xl:grid-cols-4 xl:gap-2 xl:overflow-visible xl:px-0 xl:pb-0 [&::-webkit-scrollbar]:hidden">
+          {section.steps.map((step, index) => (
+            <AboutProcessStep
+              index={index}
+              isStatic={isStatic}
+              key={step.key}
+              scrollProgress={scrollProgress}
+              step={step}
+              stepCount={section.steps.length}
+            />
+          ))}
+        </div>
+      </section>
+    </div>
   )
 }
 

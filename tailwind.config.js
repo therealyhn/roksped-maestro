@@ -2,6 +2,14 @@
 export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
+    screens: {
+      xs: '375px',
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
+      '2xl': '1440px',
+    },
     container: {
       center: true,
       padding: {
@@ -88,6 +96,37 @@ export default {
           letterSpacing: '-0.06em',
         }],
         wordmark: ['30.625rem', { lineHeight: '0.8', letterSpacing: '-0.06em' }],
+        // Fluid scale: each token reaches its exact Figma size at the 1440 px
+        // canvas and clamps below/above it. Overriding leading-* is expected
+        // where a Figma node uses a different line height.
+        'fluid-display': ['clamp(2.25rem, 5.35vw, 4.8125rem)', {
+          lineHeight: '0.98',
+          letterSpacing: '-0.04em',
+        }],
+        'fluid-heading': ['clamp(2rem, 3.82vw, 3.4375rem)', {
+          lineHeight: '1',
+          letterSpacing: '-0.05em',
+        }],
+        'fluid-heading-lg': ['clamp(2.25rem, 4.38vw, 3.9375rem)', {
+          lineHeight: '1.1',
+          letterSpacing: '-0.06em',
+        }],
+        'fluid-stat': ['clamp(1.75rem, 2.85vw, 2.5625rem)', {
+          lineHeight: '1.3',
+          letterSpacing: '-0.01em',
+        }],
+        'fluid-title': ['clamp(1.25rem, 1.67vw, 1.5rem)', {
+          lineHeight: '1.3',
+          letterSpacing: '-0.01em',
+        }],
+        'fluid-lead': ['clamp(1.0625rem, 1.46vw, 1.3125rem)', {
+          lineHeight: '1.4',
+          letterSpacing: '-0.01em',
+        }],
+        'fluid-body': ['clamp(1rem, 1.25vw, 1.125rem)', {
+          lineHeight: '1.55',
+          letterSpacing: '0.01em',
+        }],
       },
       letterSpacing: {
         title: '-0.03em',
@@ -115,6 +154,7 @@ export default {
       },
       maxWidth: {
         content: '81rem',
+        canvas: '90rem',
       },
       width: {
         canvas: '90rem',
@@ -122,6 +162,10 @@ export default {
       spacing: {
         gutter: '4.5rem',
         'gutter-fluid': 'clamp(1.25rem, 5vw, 4.5rem)',
+        // Vertical section rhythm: reaches the Figma desktop value at 1440 px.
+        section: 'clamp(4rem, 10.4vw, 9.375rem)',
+        'section-sm': 'clamp(3rem, 6.25vw, 5.625rem)',
+        'section-xs': 'clamp(2.5rem, 4.2vw, 3.75rem)',
       },
     },
   },

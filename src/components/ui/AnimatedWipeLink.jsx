@@ -20,10 +20,10 @@ const variants = {
   },
 }
 
-function AnimatedWipeLink({children, className = '', href, to, variant = 'yellowToDark', ...props}) {
+function AnimatedWipeLink({as, children, className = '', href, to, variant = 'yellowToDark', ...props}) {
   const styles = variants[variant]
-  const Component = href ? 'a' : Link
-  const navigationProps = href ? {href} : {to}
+  const Component = as === 'button' ? 'button' : href ? 'a' : Link
+  const navigationProps = as === 'button' ? {} : href ? {href} : {to}
 
   return (
     <Component

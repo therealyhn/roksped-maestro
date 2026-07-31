@@ -1,26 +1,13 @@
-function FooterCompanyData({company}) {
-  const details = [
-    ['Šifra delatnosti', company?.activityCode],
-    ['PIB', company?.taxId],
-    ['Matični broj', company?.registrationNumber],
-    ['Pravna forma', company?.legalForm],
-    ['Banka', company?.bankName],
-    ['Broj računa', company?.bankAccount],
-  ].filter(([, value]) => value)
-
-  if (!company || details.length === 0) {
-    return null
-  }
-
+function FooterCompanyData({details, heading, logo}) {
   return (
-    <section aria-label="Podaci o preduzeću" className="max-w-[408px]">
-      <p className="font-wordmark text-[2.25rem] leading-none tracking-[-0.12em] text-white">rokšped</p>
-      <h2 className="mt-2 text-[1.375rem] font-medium leading-[1.2] tracking-title text-white">Podaci o preduzeću</h2>
-      <dl className="mt-4 grid grid-cols-2 gap-x-8 gap-y-4 text-sm leading-[1.35] text-brand-footer-muted">
+    <section aria-label={heading} className="xl:w-[408px]">
+      <img alt="Rok Šped" className="h-[57px] w-[92px] object-contain" src={logo} />
+      <h2 className="mt-3 text-[20px] font-semibold leading-[1.5]">{heading}</h2>
+      <dl className="mt-3 grid w-full max-w-[408px] grid-cols-2 gap-x-[clamp(1rem,2vw,1.875rem)] gap-y-[18px] text-[15px] leading-[1.4] sm:text-[16px]">
         {details.map(([label, value]) => (
-          <div key={label}>
-            <dt>{label}</dt>
-            <dd className="mt-1 text-white">{value}</dd>
+          <div className="min-w-0" key={label}>
+            <dt className="text-brand-footer-muted">{label}</dt>
+            <dd className="[overflow-wrap:anywhere] font-medium text-white">{value}</dd>
           </div>
         ))}
       </dl>

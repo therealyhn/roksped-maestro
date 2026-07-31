@@ -1,86 +1,94 @@
 import {useEffect, useRef} from 'react'
-import {useMotionValue} from 'framer-motion'
+import {useMotionValue, useSpring} from 'framer-motion'
 
-const revealDistance = 800
-const maximumDeltaPerEvent = 120
+export const pinnedRevealDistance = 800
+export const pinnedRevealSettleDistance = 120
+export const pinnedRevealTrackDistance = pinnedRevealDistance + pinnedRevealSettleDistance
 
-function getPixelDelta(event) {
-  if (event.deltaMode === WheelEvent.DOM_DELTA_LINE) {
-    return event.deltaY * 16
-  }
-
-  if (event.deltaMode === WheelEvent.DOM_DELTA_PAGE) {
-    return event.deltaY * window.innerHeight
-  }
-
-  return event.deltaY
+const springOptions = {
+  damping: 35,
+  mass: 0.55,
+  stiffness: 250,
 }
 
-function snapSectionToTop(sectionTop) {
-  const root = document.documentElement
-  const previousScrollBehavior = root.style.scrollBehavior
-
-  root.style.scrollBehavior = 'auto'
-  window.scrollTo(0, window.scrollY + sectionTop)
-  root.style.scrollBehavior = previousScrollBehavior
+function clamp(value, minimum, maximum) {
+  return Math.min(Math.max(value, minimum), maximum)
 }
 
-function usePinnedServiceReveal(sectionRef, disabled, onComplete) {
-  const progress = useMotionValue(disabled ? 1 : 0)
-  const progressRef = useRef(disabled ? 1 : 0)
+function usePinnedServiceReveal(
+  trackRef,
+  disabled,
+  onComplete,
+) {
+  const rawProgress = useMotionValue(disabled ? 1 : 0)
+  const smoothProgress = useSpring(rawProgress, springOptions)
+  const completionNotifiedRef = useRef(false)
+  const onCompleteRef = useRef(onComplete)
+
+  useEffect(() => {
+    onCompleteRef.current = onComplete
+  }, [onComplete])
 
   useEffect(() => {
     if (disabled) {
-      progressRef.current = 1
-      progress.set(1)
+      completionNotifiedRef.current = false
+      rawProgress.set(1)
       return undefined
     }
 
-    progressRef.current = 0
-    progress.set(0)
+    const windowRef = globalThis.window
+    let frameId = null
 
-    const handleWheel = (event) => {
-      const section = sectionRef.current
-      const pixelDelta = getPixelDelta(event)
+    const updateProgress = () => {
+      frameId = null
 
-      if (!section || pixelDelta <= 0 || progressRef.current >= 1) {
-        return
-      }
+      const track = trackRef.current
 
-      const sectionBounds = section.getBoundingClientRect()
-      const crossesSectionTop = sectionBounds.top > 0 && sectionBounds.top <= pixelDelta
-      const isAtSectionTop = sectionBounds.top <= 1 && sectionBounds.top >= -120
+      if (!track) return
 
-      if (!crossesSectionTop && !isAtSectionTop) {
-        return
-      }
+      const trackRect = track.getBoundingClientRect()
+      const traveledDistance = Math.max(-trackRect.top, 0)
+      const nextProgress = clamp(
+        traveledDistance / pinnedRevealDistance,
+        0,
+        1,
+      )
 
-      event.preventDefault()
+      rawProgress.set(nextProgress)
 
-      if (Math.abs(sectionBounds.top) > 1) {
-        snapSectionToTop(sectionBounds.top)
-      }
+      const trackComplete = traveledDistance >= pinnedRevealTrackDistance - 1
 
-      const availableDelta = crossesSectionTop
-        ? Math.max(0, pixelDelta - sectionBounds.top)
-        : pixelDelta
-      const revealDelta = Math.min(availableDelta, maximumDeltaPerEvent)
-      const nextProgress = Math.min(1, progressRef.current + revealDelta / revealDistance)
-
-      progressRef.current = nextProgress
-      progress.set(nextProgress)
-
-      if (nextProgress === 1) {
-        onComplete?.(window.scrollY)
+      if (trackComplete && !completionNotifiedRef.current) {
+        completionNotifiedRef.current = true
+        const trackDocumentTop = windowRef.scrollY + trackRect.top
+        onCompleteRef.current?.(trackDocumentTop + pinnedRevealTrackDistance)
+      } else if (!trackComplete) {
+        completionNotifiedRef.current = false
       }
     }
 
-    window.addEventListener('wheel', handleWheel, {passive: false})
+    const scheduleProgressUpdate = () => {
+      if (frameId === null) {
+        frameId = windowRef.requestAnimationFrame(updateProgress)
+      }
+    }
 
-    return () => window.removeEventListener('wheel', handleWheel)
-  }, [disabled, onComplete, progress, sectionRef])
+    rawProgress.set(0)
+    scheduleProgressUpdate()
+    windowRef.addEventListener('scroll', scheduleProgressUpdate, {passive: true})
+    windowRef.addEventListener('resize', scheduleProgressUpdate, {passive: true})
 
-  return progress
+    return () => {
+      windowRef.removeEventListener('scroll', scheduleProgressUpdate)
+      windowRef.removeEventListener('resize', scheduleProgressUpdate)
+
+      if (frameId !== null) {
+        windowRef.cancelAnimationFrame(frameId)
+      }
+    }
+  }, [disabled, rawProgress, trackRef])
+
+  return smoothProgress
 }
 
 export default usePinnedServiceReveal

@@ -9,12 +9,12 @@ function HomeFaqSection({section}) {
   return (
     <section
       aria-labelledby="home-faq-heading"
-      className="min-h-[672px] border-t border-brand-structure bg-brand-canvas"
+      className="mx-auto min-h-[100svh] w-full max-w-canvas border-t border-brand-structure bg-brand-canvas lg:min-h-[672px]"
       id="faq"
     >
       <div className="grid min-h-[671px] lg:grid-cols-[44.1%_1fr]">
         <div className="border-brand-structure px-gutter-fluid pb-20 pt-24 lg:border-r lg:pt-[124px]">
-          <h2 className="max-w-[505px] text-[55px] font-medium leading-[1.1] tracking-[-0.05em]" id="home-faq-heading">
+          <h2 className="max-w-[505px] text-[clamp(2.625rem,7.16vw,3.4375rem)] font-medium leading-[1.1] tracking-[-0.05em]" id="home-faq-heading">
             {section.heading}
           </h2>
         </div>

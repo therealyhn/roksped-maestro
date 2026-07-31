@@ -15,12 +15,12 @@ function FaqItem({index, isOpen, item, onToggle, prefersReducedMotion}) {
       <button
         aria-controls={answerId}
         aria-expanded={isOpen}
-        className={`flex w-full items-center justify-between gap-6 text-left ${index === 0 ? 'h-[66px] pb-7' : 'h-[112px] py-[38px]'}`}
+        className={`flex min-h-[88px] w-full items-center justify-between gap-5 py-6 text-left lg:gap-6 ${index === 0 ? 'lg:h-[66px] lg:pb-7 lg:pt-0' : 'lg:h-[112px] lg:py-[38px]'}`}
         id={buttonId}
         onClick={onToggle}
         type="button"
       >
-        <span className={`text-[20px] font-medium leading-none tracking-[-0.03em] ${index === 0 ? '-mt-[3px] self-start' : ''}`}>
+        <span className={`text-[18px] font-medium leading-[1.15] tracking-[-0.03em] lg:text-[20px] lg:leading-none ${index === 0 ? 'lg:-mt-[3px] lg:self-start' : ''}`}>
           {item.question}
         </span>
         <span className="grid size-8 shrink-0 place-items-center rounded-detail bg-brand-night">

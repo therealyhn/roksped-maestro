@@ -1,7 +1,10 @@
 import {NavLink} from 'react-router-dom'
+import useBodyScrollLock from '../../hooks/useBodyScrollLock.js'
 
 function MobileNavigation({items, primaryCta, disclosure}) {
   const {isOpen, toggle, close, triggerRef} = disclosure
+
+  useBodyScrollLock(isOpen)
 
   return (
     <nav aria-label="Glavna navigacija" className="md:hidden">
@@ -22,11 +25,11 @@ function MobileNavigation({items, primaryCta, disclosure}) {
       </button>
 
       {isOpen ? (
-        <div className="absolute left-0 right-0 top-[calc(100%+0.75rem)] rounded-[1.375rem] border border-brand-structure bg-brand-canvas p-2 shadow-navigation" id="mobile-navigation-panel">
+        <div className="absolute left-0 right-0 top-[calc(100%+0.75rem)] max-h-[calc(100dvh-7rem)] overflow-y-auto rounded-[1.375rem] border border-brand-structure bg-brand-canvas p-2 shadow-navigation" id="mobile-navigation-panel">
           <div className="grid gap-1">
             {items.map(({label, path}) => (
               <NavLink
-                className="rounded-[0.875rem] px-4 py-3 text-sm uppercase tracking-normal text-brand-ink hover:bg-brand-soft-neutral"
+                className={({isActive}) => `flex min-h-11 items-center rounded-[0.875rem] px-4 text-sm uppercase tracking-normal text-brand-ink hover:bg-brand-soft-neutral ${isActive ? 'bg-brand-soft-neutral font-medium' : ''}`}
                 key={path}
                 onClick={close}
                 to={path}
@@ -35,9 +38,9 @@ function MobileNavigation({items, primaryCta, disclosure}) {
               </NavLink>
             ))}
             <NavLink
-              className="mt-1 inline-flex items-center justify-between rounded-[0.875rem] bg-brand-signal-yellow px-4 py-3 text-sm text-brand-ink"
+              className="mt-1 flex min-h-11 items-center justify-between rounded-[0.875rem] bg-brand-signal-yellow px-4 text-sm text-brand-ink"
               onClick={close}
-              to="/kontakt"
+              to={primaryCta.path}
             >
               <span>{primaryCta.label}</span>
               <span aria-hidden="true">↗</span>

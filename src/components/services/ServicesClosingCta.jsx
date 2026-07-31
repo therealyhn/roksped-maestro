@@ -3,7 +3,7 @@ import FigmaArrow from '../ui/FigmaArrow.jsx'
 
 function ServicesClosingCta({section}) {
   return (
-    <section aria-labelledby="services-closing-heading" className="relative mx-auto h-[495px] w-full max-w-[1440px] overflow-hidden bg-brand-canvas">
+    <section aria-labelledby="services-closing-heading" className="relative mx-auto h-[495px] w-full max-w-canvas overflow-hidden bg-brand-canvas">
       <img alt="" aria-hidden="true" className="absolute left-1/2 top-[-65px] h-[600px] w-[585px] max-w-none -translate-x-1/2 lg:left-[518px] lg:top-[-204px] lg:h-[1149px] lg:w-[1119px] lg:translate-x-0" decoding="async" loading="lazy" src={section.mark} />
       <div className="absolute inset-x-5 top-[105px] flex flex-col items-center text-center lg:left-1/2 lg:right-auto lg:top-[130px] lg:w-[666px] lg:-translate-x-1/2">
         <h1 className="w-full text-[40px] font-medium leading-none tracking-[-0.05em] lg:h-[60px] lg:text-[55px]" id="services-closing-heading">{section.heading}</h1>
