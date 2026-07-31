@@ -1,6 +1,7 @@
 import useTabs from '../../hooks/useTabs.js'
 import LocationPanel from '../home/LocationPanel.jsx'
 import LocationTabs from '../home/LocationTabs.jsx'
+import HorizontalScrollHint from '../ui/HorizontalScrollHint.jsx'
 
 const mapAsset = '/assets/shared/locations-map.svg'
 
@@ -29,6 +30,7 @@ function LocationsDisplay({section, className = ''}) {
         </div>
         <div className="mt-0 min-w-0 xl:mt-[74px]">
           <LocationTabs activeId={tabs.activeId} locations={section.items} onKeyDown={tabs.onKeyDown} onSelect={tabs.select} />
+          <HorizontalScrollHint className="mt-3 md:hidden" label="Prevucite za još filijala" />
           <LocationPanel location={activeLocation} section={section} />
         </div>
       </div>

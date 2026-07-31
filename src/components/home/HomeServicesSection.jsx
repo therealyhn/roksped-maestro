@@ -23,7 +23,7 @@ function HomeServicesSection({onRevealComplete, section}) {
     >
       <section
         aria-labelledby="home-services-heading"
-        className={`mx-auto min-h-[100svh] w-full max-w-canvas bg-brand-canvas px-gutter-fluid py-20 xl:h-[636px] xl:min-h-0 xl:py-[90px] ${isStatic ? '' : 'sticky top-0'}`}
+        className={`mx-auto w-full max-w-canvas bg-brand-canvas px-gutter-fluid py-16 md:py-20 xl:h-[636px] xl:py-[90px] ${isStatic ? '' : 'sticky top-0'}`}
         id="usluge"
       >
         <div className="mx-auto max-w-content">

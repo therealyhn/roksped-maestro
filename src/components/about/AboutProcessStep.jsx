@@ -52,7 +52,7 @@ function AboutProcessStep({
 
   return (
     <motion.article
-      className="relative aspect-square w-full min-w-[82vw] max-w-[346px] snap-center overflow-hidden rounded-full bg-brand-logistics-green text-center sm:min-w-[346px] xl:min-w-0 xl:max-w-none"
+      className="relative aspect-square w-full min-w-[78vw] max-w-[300px] snap-center overflow-hidden rounded-full bg-brand-logistics-green text-center sm:min-w-[280px] sm:max-w-[280px] lg:min-w-0 lg:max-w-none"
       style={isStatic ? undefined : {opacity, x}}
     >
       <div className="absolute inset-x-[12%] top-[14.5%] flex justify-center">

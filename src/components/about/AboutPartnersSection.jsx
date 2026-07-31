@@ -95,11 +95,13 @@ function AboutPartnersSection({section}) {
   const hasActivePartner = activePartnerId !== null
 
   return (
-    <section className="mx-auto w-full max-w-canvas bg-brand-canvas px-5 py-20 xl:relative xl:h-[687px] xl:p-0" aria-labelledby="about-partners-heading">
-      <AboutTag className="mx-auto flex w-fit bg-brand-canvas xl:absolute xl:left-1/2 xl:top-[40px] xl:-translate-x-1/2">{section.eyebrow}</AboutTag>
+    <section className="mx-auto w-full max-w-canvas bg-brand-canvas px-5 py-20 lg:pt-10 xl:relative xl:h-[687px] xl:p-0" aria-labelledby="about-partners-heading">
+      <div className="flex w-full justify-center xl:absolute xl:inset-x-0 xl:top-[40px]">
+        <AboutTag className="bg-brand-canvas">{section.eyebrow}</AboutTag>
+      </div>
 
       <h2
-        className="mx-auto mt-16 max-w-[1000px] text-center text-[clamp(2.125rem,8vw,3.9375rem)] font-normal leading-[1.1] tracking-[-0.06em] xl:absolute xl:left-1/2 xl:top-[150px] xl:mt-0 xl:w-[1000px] xl:-translate-x-1/2"
+        className="mx-auto mt-16 w-full max-w-[1000px] text-center text-[clamp(1.625rem,7vw,3.9375rem)] font-normal leading-[1.1] tracking-[-0.06em] xl:absolute xl:left-1/2 xl:top-[150px] xl:mt-0 xl:w-[1000px] xl:-translate-x-1/2"
         id="about-partners-heading"
         onMouseLeave={() => setActivePartnerId(null)}
       >

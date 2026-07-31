@@ -59,6 +59,22 @@ export const aboutFigmaContent = Object.freeze({
         eyePosition: 'center 35%',
         portraitPosition: 'center 30%',
       },
+      {
+        id: 'customs-team',
+        name: 'Član Rok Šped tima',
+        role: 'Carinsko posredovanje',
+        image: '/assets/about/team-member-03.jpg',
+        eyePosition: 'center 25%',
+        portraitPosition: 'center 30%',
+      },
+      {
+        id: 'administration-team',
+        name: 'Član Rok Šped tima',
+        role: 'Administracija',
+        image: '/assets/about/team-member-02.jpg',
+        eyePosition: 'center 32%',
+        portraitPosition: 'center 26%',
+      },
     ],
   },
   process: {

@@ -1,5 +1,6 @@
 import {motion} from 'framer-motion'
 import useCircularCarousel from '../../hooks/useCircularCarousel.js'
+import useMediaQuery from '../../hooks/useMediaQuery.js'
 import useReducedMotionPreference from '../../hooks/useReducedMotionPreference.js'
 import getCircularOffset from '../../lib/motion/getCircularOffset.js'
 import FigmaArrow from '../ui/FigmaArrow.jsx'
@@ -8,9 +9,12 @@ import TestimonialWordmarkMarquee from './TestimonialWordmarkMarquee.jsx'
 
 function HomeTestimonialsSection({showcase}) {
   const prefersReducedMotion = useReducedMotionPreference()
+  const isMobile = useMediaQuery('(max-width: 767px)')
+  const isTablet = useMediaQuery('(min-width: 768px) and (max-width: 1023px)')
   const {activeIndex, showNext, showPrevious} = useCircularCarousel(showcase.items.length)
   const activeTestimonial = showcase.items[activeIndex]
   const backgroundColor = activeTestimonial.theme === 'yellow' ? '#D2FF72' : '#00A85A'
+  const sideScale = isMobile ? 0.46 : isTablet ? 0.58 : 0.693
 
   return (
     <motion.section
@@ -55,7 +59,7 @@ function HomeTestimonialsSection({showcase}) {
       <div
         aria-label={`Iskustvo klijenta ${activeIndex + 1} od ${showcase.items.length}`}
         aria-live="polite"
-        className="absolute left-1/2 top-[405px] size-[min(82vw,499px)] -translate-x-1/2 [--testimonial-orbit-x:22vw] [--testimonial-orbit-y:300px] lg:left-auto lg:right-[9.5%] lg:top-1/2 lg:size-[499px] lg:translate-x-0 lg:-translate-y-1/2 lg:[--testimonial-orbit-x:205px] lg:[--testimonial-orbit-y:430px]"
+        className="absolute left-1/2 top-[390px] size-[min(76vw,350px)] -translate-x-1/2 [--testimonial-active-x:0px] [--testimonial-orbit-x:20vw] [--testimonial-orbit-y:260px] md:left-auto md:right-[-10px] md:top-1/2 md:size-[420px] md:translate-x-0 md:-translate-y-1/2 md:[--testimonial-active-x:-72px] md:[--testimonial-orbit-x:0px] md:[--testimonial-orbit-y:350px] lg:right-[9.5%] lg:size-[499px] lg:[--testimonial-active-x:0px] lg:[--testimonial-orbit-x:205px] lg:[--testimonial-orbit-y:430px]"
         role="region"
       >
         {showcase.items.map((item, itemIndex) => (
@@ -64,6 +68,7 @@ function HomeTestimonialsSection({showcase}) {
             key={item.id}
             offset={getCircularOffset(itemIndex, activeIndex, showcase.items.length)}
             prefersReducedMotion={prefersReducedMotion}
+            sideScale={sideScale}
           />
         ))}
       </div>

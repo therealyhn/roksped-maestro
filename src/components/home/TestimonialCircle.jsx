@@ -6,12 +6,12 @@ const circleTransition = {
   ease: [0.76, 0, 0.24, 1],
 }
 
-function TestimonialCircle({item, offset, prefersReducedMotion}) {
+function TestimonialCircle({item, offset, prefersReducedMotion, sideScale}) {
   const isActive = offset === 0
 
   return (
     <motion.article
-      animate={getTestimonialCircleMotion(offset)}
+      animate={getTestimonialCircleMotion(offset, sideScale)}
       aria-hidden={!isActive}
       className="absolute inset-0 overflow-hidden rounded-full text-center text-white will-change-transform"
       initial={false}

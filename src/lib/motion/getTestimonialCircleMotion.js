@@ -1,28 +1,32 @@
-const visibleSlots = {
-  '-1': {
-    x: 'var(--testimonial-orbit-x)',
-    y: 'calc(var(--testimonial-orbit-y) * -1)',
-    scale: 0.693,
-    opacity: 1,
-    zIndex: 2,
-  },
-  0: {
-    x: 0,
-    y: 0,
-    scale: 1,
-    opacity: 1,
-    zIndex: 3,
-  },
-  1: {
-    x: 'var(--testimonial-orbit-x)',
-    y: 'var(--testimonial-orbit-y)',
-    scale: 0.693,
-    opacity: 1,
-    zIndex: 2,
-  },
+function getVisibleSlots(sideScale) {
+  return {
+    '-1': {
+      x: 'var(--testimonial-orbit-x)',
+      y: 'calc(var(--testimonial-orbit-y) * -1)',
+      scale: sideScale,
+      opacity: 1,
+      zIndex: 2,
+    },
+    0: {
+      x: 'var(--testimonial-active-x, 0px)',
+      y: 0,
+      scale: 1,
+      opacity: 1,
+      zIndex: 3,
+    },
+    1: {
+      x: 'var(--testimonial-orbit-x)',
+      y: 'var(--testimonial-orbit-y)',
+      scale: sideScale,
+      opacity: 1,
+      zIndex: 2,
+    },
+  }
 }
 
-function getTestimonialCircleMotion(offset) {
+function getTestimonialCircleMotion(offset, sideScale = 0.693) {
+  const visibleSlots = getVisibleSlots(sideScale)
+
   if (visibleSlots[offset]) {
     return visibleSlots[offset]
   }

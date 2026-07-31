@@ -1,20 +1,20 @@
 function MemberDetails({className = '', member}) {
   return (
-    <div className={`absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 bg-gradient-to-t from-black via-black/45 to-transparent px-6 pb-6 pt-28 text-left text-white ${className}`.trim()}>
+    <div className={`absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 bg-gradient-to-t from-black via-black/45 to-transparent px-5 pb-5 pt-28 text-left text-white ${className}`.trim()}>
       <span className="text-[17px] leading-none tracking-[-0.02em]">
         {member.name}
       </span>
-      <span className="flex shrink-0 items-center gap-2 text-[10px] font-medium uppercase tracking-[0.02em]">
-        <span className="size-[9px] rounded-full bg-brand-signal-yellow" />
+      <span className="flex max-w-[48%] shrink-0 items-center justify-end gap-2 text-right text-[9px] font-medium uppercase leading-[1.15] tracking-[0.02em]">
+        <span className="size-[9px] shrink-0 rounded-full bg-brand-signal-yellow" />
         {member.role}
       </span>
     </div>
   )
 }
 
-function MobileMemberCard({member}) {
+function MemberCard({member}) {
   return (
-    <article className="relative h-[430px] min-w-[82vw] max-w-[345px] snap-center overflow-hidden rounded-card-lg bg-brand-ink sm:min-w-[345px]">
+    <article className="relative h-[410px] min-w-[82vw] max-w-[340px] snap-center overflow-hidden rounded-card-lg bg-brand-ink sm:h-[360px] sm:min-w-0 sm:w-[calc(50%-8px)] lg:h-[380px] lg:w-[calc(33.333%-11px)] lg:max-w-none">
       <img
         alt={member.name}
         className="absolute inset-0 size-full object-cover grayscale"
@@ -62,15 +62,15 @@ function AboutTeamGallery({members}) {
   return (
     <>
       <div className="xl:hidden">
-        <p className="text-center text-[24px] font-semibold uppercase leading-[1.05]">
+        <p className="text-center text-[clamp(1.5rem,3.3vw,2rem)] font-semibold uppercase leading-[1.05]">
           Iza svakog procesa<br />stoje ljudi.
         </p>
-        <div className="-mx-5 mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4">
+        <div className="-mx-gutter-fluid mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-gutter-fluid pb-4 [scrollbar-width:none] sm:mx-auto sm:max-w-content sm:flex-wrap sm:justify-center sm:overflow-visible sm:px-0 [&::-webkit-scrollbar]:hidden">
           {members.map((member) => (
-            <MobileMemberCard key={member.id} member={member} />
+            <MemberCard key={member.id} member={member} />
           ))}
         </div>
-        <p className="mt-8 text-center text-[24px] font-semibold uppercase leading-[1.05]">
+        <p className="mt-10 text-center text-[clamp(1.5rem,3.3vw,2rem)] font-semibold uppercase leading-[1.05]">
           Iza svakog kilometra<br />stoji znanje stečeno u praksi.
         </p>
       </div>
