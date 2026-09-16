@@ -27,7 +27,7 @@ Every push to `main` builds and deploys `dist/` through FTPS. The workflow is in
 
 Add these values to the repository's `production` environment in GitHub:
 
-- `FTP_SERVER` - FTP/FTPS hostname from the hosting provider
+- `FTP_SERVER` - `cp.maestro-solutions.org` (use the hostname, not the server IP, so FTPS certificate validation succeeds)
 - `FTP_USERNAME` - FTP username
 - `FTP_PASSWORD` - FTP password
 - `FTP_SERVER_DIR` - target directory, for example `/public_html/`
