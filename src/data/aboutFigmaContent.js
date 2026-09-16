@@ -1,3 +1,20 @@
+import {homeFigmaContent} from './homeFigmaContent.js'
+
+const teamPortraits = [
+  {image: '/assets/about/team-member-02.jpg', eyePosition: 'center 30%', portraitPosition: 'center 30%'},
+  {image: '/assets/about/team-member-01.jpg', eyePosition: 'center 35%', portraitPosition: 'center 30%'},
+  {image: '/assets/about/team-member-03.jpg', eyePosition: 'center 25%', portraitPosition: 'center 30%'},
+]
+
+const locationContacts = homeFigmaContent.locations.items.flatMap((location) => location.contacts)
+const vladimirContact = locationContacts.find((contact) => contact.name === 'Vladimir Dakić')
+const sladjanaContact = locationContacts.find((contact) => contact.name === 'Slađana Vasić')
+
+const locationTeamMembers = [
+  {...vladimirContact, id: vladimirContact.email, image: teamPortraits[0].image, portraitPosition: teamPortraits[0].portraitPosition, desktopOrder: 1},
+  {...sladjanaContact, id: sladjanaContact.email, image: teamPortraits[1].image, portraitPosition: teamPortraits[1].portraitPosition, desktopOrder: 3},
+]
+
 export const aboutFigmaContent = Object.freeze({
   hero: {
     eyebrow: 'Naša priča',
@@ -36,45 +53,15 @@ export const aboutFigmaContent = Object.freeze({
     intro: 'Upoznajte članove tima koji svojim iskustvom, odgovornošću i stručnim znanjem vode kompaniju i grade dugoročne odnose sa klijentima i partnerima.',
     members: [
       {
-        id: 'transport-team',
-        name: 'Član Rok Šped tima',
-        role: 'Transport',
-        image: '/assets/about/team-member-02.jpg',
-        eyePosition: 'center 30%',
-        portraitPosition: 'center 30%',
-      },
-      {
         id: 'bojan-bojanic',
         name: 'Bojan Bojanić',
         role: 'Direktor',
         image: '/assets/about/team-member-03.jpg',
         eyePosition: 'center 27%',
         portraitPosition: 'center 34%',
+        desktopOrder: 2,
       },
-      {
-        id: 'logistics-team',
-        name: 'Član Rok Šped tima',
-        role: 'Logistika',
-        image: '/assets/about/team-member-01.jpg',
-        eyePosition: 'center 35%',
-        portraitPosition: 'center 30%',
-      },
-      {
-        id: 'customs-team',
-        name: 'Član Rok Šped tima',
-        role: 'Carinsko posredovanje',
-        image: '/assets/about/team-member-03.jpg',
-        eyePosition: 'center 25%',
-        portraitPosition: 'center 30%',
-      },
-      {
-        id: 'administration-team',
-        name: 'Član Rok Šped tima',
-        role: 'Administracija',
-        image: '/assets/about/team-member-02.jpg',
-        eyePosition: 'center 32%',
-        portraitPosition: 'center 26%',
-      },
+      ...locationTeamMembers,
     ],
   },
   process: {

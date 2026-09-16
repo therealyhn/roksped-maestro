@@ -34,7 +34,8 @@ function DesktopMemberReveal({member}) {
   return (
     <button
       aria-label={`Prikaži člana tima: ${member.name}, ${member.role}`}
-      className="group relative h-[69px] flex-1 overflow-visible focus-visible:z-20 hover:z-20"
+      className="group relative order-[var(--desktop-order)] h-[69px] flex-1 overflow-visible focus-visible:z-20 hover:z-20"
+      style={{'--desktop-order': member.desktopOrder}}
       type="button"
     >
       <span className="absolute inset-x-0 top-0 h-[69px] overflow-hidden bg-brand-ink transition-[height,top] duration-[650ms] ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:top-[-212px] group-hover:h-[493px] group-focus-visible:top-[-212px] group-focus-visible:h-[493px] motion-reduce:transition-none">

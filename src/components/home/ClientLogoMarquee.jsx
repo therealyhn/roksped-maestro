@@ -20,9 +20,11 @@ function ClientLogoMarquee() {
             {missionClientLogos.map((logo) => (
               <img
                 alt=""
+                aria-hidden="true"
                 className={`h-[15px] shrink-0 object-contain ${logo.widthClass}`}
                 decoding="async"
                 key={`${copyIndex}-${logo.name}`}
+                loading="lazy"
                 src={logo.src}
               />
             ))}

@@ -66,6 +66,7 @@ function TransportDetails({prefersReducedMotion, service}) {
           className="h-[clamp(190px,31svh,261px)] w-full object-cover"
           decoding="async"
           height="261"
+          loading="lazy"
           src={panelImage}
           width="411"
         />
@@ -94,6 +95,7 @@ function TransportDetails({prefersReducedMotion, service}) {
           height="261"
           initial={prefersReducedMotion ? false : {x: 18}}
           key={activeTransport.key}
+          loading="lazy"
           src={panelImage}
           transition={transition}
           width="411"
@@ -151,6 +153,7 @@ function ServiceDetails({prefersReducedMotion, service}) {
         className="h-[clamp(190px,31svh,261px)] w-full object-cover"
         decoding="async"
         height="261"
+        loading="lazy"
         src={service.panelImage}
         width="411"
       />

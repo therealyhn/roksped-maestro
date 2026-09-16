@@ -6,9 +6,7 @@
 
 @layer base {
   :root {
-    color: theme('colors.brand.ink');
-    background-color: theme('colors.brand.canvas');
-    font-family: theme('fontFamily.sans');
+    @apply bg-brand-canvas font-sans text-brand-ink;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -31,15 +29,13 @@
     min-width: 320px;
     margin: 0;
     overflow-x: clip;
-    background-color: theme('colors.brand.canvas');
-    color: theme('colors.brand.ink');
-    font-family: theme('fontFamily.sans');
+    @apply bg-brand-canvas font-sans text-brand-ink;
     font-weight: 400;
     line-height: 1.5;
   }
 
   :focus-visible {
-    outline: 2px solid theme('colors.brand.signal-yellow');
+    @apply outline-2 outline-brand-signal-yellow;
     outline-offset: 3px;
   }
 

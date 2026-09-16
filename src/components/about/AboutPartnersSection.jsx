@@ -15,20 +15,26 @@ function PartnerLogo({partner}) {
           <img
             alt=""
             className="absolute left-[-52px] top-[-32px] h-[132px] w-[132px] max-w-none"
+            decoding="async"
             draggable="false"
+            loading="lazy"
             src="/assets/about/partners/masterline-source.png"
           />
         </span>
         <img
           alt=""
           className="absolute bottom-[5px] left-[1px] h-[16px] w-[82px]"
+          decoding="async"
           draggable="false"
+          loading="lazy"
           src="/assets/about/partners/masterline-word-black.svg"
         />
         <img
           alt=""
           className="absolute bottom-[5px] right-0 h-[16px] w-[42px]"
+          decoding="async"
           draggable="false"
+          loading="lazy"
           src="/assets/about/partners/masterline-word-blue.svg"
         />
       </span>
@@ -42,7 +48,9 @@ function PartnerLogo({partner}) {
       className={partner.id === 'akiba'
         ? 'w-[94%] object-contain'
         : 'max-h-[80%] max-w-[88%] object-contain'}
+      decoding="async"
       draggable="false"
+      loading="lazy"
       src={partner.logo}
     />
   )

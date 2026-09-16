@@ -42,7 +42,7 @@ export const footerContent = {
   ],
   legal: '© 2026 Rok Šped Plus D.O.O. All rights reserved.',
   productCredit: {
-    label: 'Designed & Developed by Maestro Solutions',
+    label: 'Developed, Designed & Hosted by Maestro Solutions',
     href: 'https://maestro-solutions.org',
   },
   wordmark: 'rokšped',
