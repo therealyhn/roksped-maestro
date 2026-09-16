@@ -4,10 +4,10 @@ import {useLocation} from 'react-router-dom'
 const siteUrl = (import.meta.env.VITE_SITE_URL || 'https://www.roksped.rs').replace(/\/$/, '')
 const defaultImage = `${siteUrl}/assets/shared/logo-rok-sped.png`
 const ogImages = {
-  '/': `${siteUrl}/og-image-pocetna.png`,
-  '/o-nama': `${siteUrl}/og-image-onama.png`,
-  '/usluge': `${siteUrl}/og-image-usluge.png`,
-  '/kontakt': `${siteUrl}/og-image-kontakt.png`,
+  '/': `${siteUrl}/og-image-pocetna.jpg`,
+  '/o-nama': `${siteUrl}/og-image-onama.jpg`,
+  '/usluge': `${siteUrl}/og-image-usluge.jpg`,
+  '/kontakt': `${siteUrl}/og-image-kontakt.jpg`,
 }
 
 const pageSeo = {
@@ -104,14 +104,17 @@ function Seo() {
     const isNotFound = !pageSeo[pathname]
     document.title = page.title
     setMeta('description', page.description)
+    setMeta('og:site_name', 'Rok Šped Plus')
     setMeta('og:title', page.title)
     setMeta('og:description', page.description)
     setMeta('og:type', 'website')
     setMeta('og:url', canonical)
     setMeta('og:image', image)
+    setMeta('og:image:width', '1200')
+    setMeta('og:image:height', '630')
     setMeta('og:image:alt', page.imageAlt || 'Rok Šped Plus')
     setMeta('og:locale', 'sr_RS')
-    setMeta('twitter:card', 'summary')
+    setMeta('twitter:card', 'summary_large_image')
     setMeta('twitter:title', page.title)
     setMeta('twitter:description', page.description)
     setMeta('twitter:image', image)
