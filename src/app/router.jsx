@@ -2,6 +2,7 @@
 import { lazy, Suspense } from 'react'
 import { createBrowserRouter } from 'react-router-dom'
 import AppShell from '../components/layout/AppShell.jsx'
+import {aboutCredit} from '../data/aboutCredit.js'
 
 const HomePage = lazy(() => import('../pages/HomePage.jsx'))
 const AboutPage = lazy(() => import('../pages/AboutPage.jsx'))
@@ -23,7 +24,7 @@ export const router = createBrowserRouter([
     element: <AppShell />,
     children: [
       { index: true, element: <LazyPage Page={HomePage} /> },
-      { path: 'o-nama', element: <LazyPage Page={AboutPage} /> },
+      { path: 'o-nama', element: <LazyPage Page={AboutPage} />, handle: { credit: aboutCredit } },
       { path: 'usluge', element: <LazyPage Page={ServicesPage} /> },
       { path: 'kontakt', element: <LazyPage Page={ContactPage} /> },
       {
