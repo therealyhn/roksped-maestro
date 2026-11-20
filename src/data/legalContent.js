@@ -17,98 +17,108 @@ export const legalLabels = {
 export const legalContent = {
     privacy: {
         title: 'Politika privatnosti',
-        updatedAt: 'Poslednje ažuriranje: 12. jun 2026.',
+        updatedAt: 'Poslednje ažuriranje: 20. novembar 2026.',
         intro:
-            'Ova Politika privatnosti objašnjava kako Rok Šped Plus D.O.O. Smederevo obrađuje podatke o ličnosti posetilaca sajta, poslovnih kontakata i lica čiji su podaci potrebni za pružanje usluga špedicije, carinskog zastupanja, logistike, skladištenja i transporta.',
+            `Ova Politika privatnosti objašnjava kako ${company.name} obrađuje podatke o ličnosti kada posećujete sajt roksped.rs ili pošaljete kontakt formu. Obrada se vrši u skladu sa Zakonom o zaštiti podataka o ličnosti („Službeni glasnik RS”, broj 87/2018).`,
         sections: [
             {
                 title: '1. Rukovalac podacima',
                 paragraphs: [
-                    `${company.name}, ${company.address}, matični broj ${company.registrationNumber}, PIB ${company.taxId}, rukovalac je podacima obuhvaćenim ovom politikom.`,
-                    `Za pitanja o privatnosti i ostvarivanje prava možete pisati na ${company.email} ili pozvati ${company.phone}.`,
+                    `Rukovalac podacima je ${company.name}, ${company.address}, matični broj ${company.registrationNumber}, PIB ${company.taxId}.`,
+                    `Za pitanja o privatnosti i za ostvarivanje prava pišite na ${company.email}.`,
+                    `Možete i da pozovete ${company.phone}.`,
+                    'Rukovalac nije odredio lice za zaštitu podataka o ličnosti, pa se za sva pitanja koristi navedena adresa.',
                 ],
             },
             {
                 title: '2. Podaci koje obrađujemo',
                 paragraphs: [
-                    'Putem kontakt forme obrađujemo ime i prezime, email adresu, broj telefona i sadržaj poruke.',
+                    'Kada pošaljete kontakt formu, obrađuju se ime, prezime ako ga unesete, ime firme, email adresa, sadržaj poruke i izabrana vrsta usluge.',
+                    'Pri korišćenju sajta hosting i povezani tehnički servisi mogu automatski obraditi ograničene tehničke podatke, kao što su IP adresa, tip uređaja i pregledača, vreme zahteva i tražena stranica, radi isporuke sadržaja, bezbednosti i otklanjanja grešaka.',
+                    'Nemojte kroz formu slati osetljive podatke ni podatke drugih lica koji nisu potrebni za odgovor na upit.',
                     'U poslovnoj komunikaciji možemo obrađivati podatke zaposlenih, zastupnika, kontakt osoba, vozača, pošiljalaca, primalaca, vlasnika robe i drugih lica uključenih u transportni ili carinski postupak.',
                     'U zavisnosti od usluge, podaci mogu obuhvatiti poslovne kontakt podatke, funkciju i kompaniju, potpise, podatke iz ovlašćenja, transportne i carinske dokumentacije, identifikacione podatke vozača i druge podatke koje zahtevaju nadležni organi ili priroda konkretnog posla.',
-                    'Hosting i povezani tehnički servisi mogu automatski obraditi ograničene tehničke podatke, kao što su IP adresa, tip uređaja i pregledača, vreme zahteva i tražena stranica, radi isporuke sadržaja, bezbednosti i otklanjanja grešaka.',
-                ],
-            },
-            {
-                title: '3. Izvori podataka',
-                paragraphs: [
                     'Podatke najčešće dobijamo neposredno od vas, vašeg poslodavca ili nalogodavca. Podatke možemo dobiti i od pošiljaoca, primaoca, prevoznika, poslovnog partnera, carinskog ili drugog nadležnog organa, odnosno iz javno dostupnih registara kada je to potrebno i dozvoljeno.',
                     'Lice koje dostavlja podatke drugih osoba dužno je da za to ima odgovarajući osnov i da ih obavesti o relevantnoj obradi.',
                 ],
             },
             {
-                title: '4. Svrhe i pravni osnov obrade',
+                title: '3. Svrhe i pravni osnov obrade',
+                paragraphs: [
+                    'Podaci se obrađuju samo u svrhe navedene u ovom odeljku. Podaci iz forme ne koriste se za newsletter ni za direktni marketing bez posebnog prethodnog pristanka.',
+                ],
                 items: [
-                    'Odgovaranje na upite, izrada ponude i preduzimanje radnji pre zaključenja ugovora.',
+                    'Odgovaranje na upite, priprema ponude i preduzimanje radnji pre eventualnog zaključenja ugovora, na zahtev lica koje šalje upit.',
+                    'Vođenje poslovne komunikacije i zaštita sajta od zloupotrebe, na osnovu legitimnog interesa rukovaoca da odgovori na poruke i da spreči zloupotrebu forme.',
+                    'Ispunjavanje zakonskih obaveza i zaštita ili ostvarivanje pravnih zahteva, kada je primenljivo.',
                     'Izvršenje ugovorene špediterske, carinske, logističke, skladišne ili transportne usluge.',
                     'Postupanje po ovlašćenju i komunikacija sa carinskim, poreskim, inspekcijskim i drugim nadležnim organima.',
                     'Ispunjavanje obaveza iz carinskih, saobraćajnih, poreskih, računovodstvenih i drugih primenljivih propisa.',
                     'Vođenje poslovne komunikacije, zaštita informacionih sistema, sprečavanje zloupotrebe i ostvarivanje ili odbrana pravnih zahteva na osnovu legitimnog interesa.',
                     'Postupanje uz pristanak kada je pristanak potreban za posebnu svrhu.',
                 ],
-                paragraphs: [
-                    'Kontakt podaci se ne koriste za newsletter ili direktni marketing bez odgovarajućeg pravnog osnova.',
-                ],
             },
             {
-                title: '5. Primaoci podataka',
+                title: '4. Primaoci i spoljni servisi',
                 paragraphs: [
-                    'Podaci se ne prodaju. U meri potrebnoj za realizaciju usluge ili ispunjenje obaveze, mogu biti dostavljeni sledećim primaocima:',
+                    'Podaci se ne prodaju. Dostupni su pružaocima tehničkih usluga samo u meri potrebnoj za rad sajta i obradu upita.',
+                    'U meri potrebnoj za realizaciju usluge ili ispunjenje obaveze, mogu biti dostavljeni sledećim primaocima: carinskim, poreskim, graničnim, inspekcijskim, policijskim, sudskim i drugim nadležnim organima; prevoznicima, brodarima, avio-kompanijama, železničkim operaterima, agentima, terminalima, lukama, skladištima i drugim učesnicima u lancu snabdevanja; pošiljaocima, primaocima, osiguravačima, bankama, pravnim i stručnim savetnicima.',
                 ],
                 items: [
-                    'carinskim, poreskim, graničnim, inspekcijskim, policijskim, sudskim i drugim nadležnim organima;',
-                    'prevoznicima, brodarima, avio-kompanijama, železničkim operaterima, agentima, terminalima, lukama, skladištima i drugim učesnicima u lancu snabdevanja;',
-                    'pošiljaocima, primaocima, osiguravačima, bankama, pravnim i stručnim savetnicima;',
-                    'hosting i email provajderima kada je to potrebno za tehničku obradu poslovnog upita.',
+                    `Forma otvara vaš program za e-poštu, pa poruku šaljete iz svog sandučeta na adresu ${company.email}; sajt poruku ne prima i ne čuva.`,
+                    'Pružaoci hostinga i e-pošte obrađuju podatke potrebne za isporuku sajta, bezbednosne zapise i poslovnu komunikaciju.',
                 ],
             },
             {
-                title: '6. Međunarodni prenos podataka',
+                title: '5. Prenos podataka u druge države',
                 paragraphs: [
-                    'Zbog prirode međunarodnog transporta i carinskih postupaka, podaci mogu biti prosleđeni primaocima u državama tranzita, porekla ili odredišta robe. Pojedini IT pružaoci takođe mogu obrađivati podatke izvan Srbije.',
+                    'Pojedini pružaoci usluga mogu obrađivati podatke izvan Srbije. Kada je primenljivo, prenos se zasniva na odgovarajućem pravnom mehanizmu i zaštitnim merama koje pružalac usluge primenjuje.',
+                    'Zbog prirode međunarodnog transporta i carinskih postupaka, podaci mogu biti prosleđeni primaocima u državama tranzita, porekla ili odredišta robe.',
                     'Prenos se vrši kada je potreban za ugovor, postupak pred nadležnim organom ili na drugom odgovarajućem pravnom osnovu, uz primenu dostupnih zaštitnih mera.',
                 ],
             },
             {
-                title: '7. Rok čuvanja',
+                title: '6. Rok čuvanja',
                 paragraphs: [
-                    'Kontakt upiti koji ne dovedu do poslovnog odnosa uobičajeno se čuvaju do 24 meseca od poslednje komunikacije, osim kada je duže čuvanje potrebno radi zaštite pravnih interesa.',
+                    'Upiti i prateća komunikacija čuvaju se koliko je potrebno za odgovor i nastavak poslovnog odnosa, uobičajeno do 24 meseca od poslednje komunikacije, osim kada je duže čuvanje potrebno radi ugovora, zakonske obaveze ili pravnog zahteva.',
+                    'Poruke se čuvaju u sandučetu primaoca dok su potrebne za odgovor. Tehnički zapisi čuvaju se prema rokovima pružaoca usluge.',
                     'Ugovorna, transportna, carinska, računovodstvena i druga poslovna dokumentacija čuva se tokom trajanja odnosa i nakon toga u rokovima propisanim primenljivim zakonima, rokovima zastarelosti i pravilima nadležnih organa.',
                 ],
             },
             {
-                title: '8. Kolačići i spoljni sadržaj',
+                title: '7. Kolačići i slične tehnologije',
                 paragraphs: [
-                    'Sajt trenutno ne koristi korisničke naloge, analitičke ili marketinške kolačiće. Mapa i linkovi ka spoljnim platformama podležu pravilima privatnosti odgovarajućih pružalaca kada ih učitate ili posetite.',
+                    'Sajt ne koristi korisničke naloge, analitičke ni marketinške kolačiće. Ako se takve funkcije uvedu, ova politika će biti izmenjena i, kada je potrebno, biće zatražen pristanak.',
+                    'Spoljni servisi iz odeljka 4 primenjuju sopstvena pravila privatnosti kada ih učitate ili posetite.',
                 ],
             },
             {
-                title: '9. Vaša prava',
+                title: '8. Vaša prava',
                 paragraphs: [
-                    'U skladu sa primenljivim propisima možete tražiti pristup, ispravku, brisanje, ograničenje obrade, prenosivost kada je primenljiva i uložiti prigovor na obradu zasnovanu na legitimnom interesu. Kada se obrada zasniva na pristanku, pristanak možete povući u bilo kom trenutku.',
-                    `Zahtev pošaljite na ${company.email}. Radi zaštite podataka može biti potrebno da potvrdite identitet i ovlašćenje. Takođe imate pravo da podnesete pritužbu Povereniku za informacije od javnog značaja i zaštitu podataka o ličnosti Republike Srbije.`,
+                    'U skladu sa zakonom možete tražiti pristup svojim podacima, ispravku, brisanje, ograničenje obrade i prenosivost kada je primenljiva, i možete uložiti prigovor na obradu zasnovanu na legitimnom interesu. Kada se obrada zasniva na pristanku, pristanak možete povući u bilo kom trenutku.',
+                    `Zahtev pošaljite na ${company.email}. Radi zaštite podataka može biti potrebno da potvrdite identitet. Na zahtev se odgovara najkasnije u roku od 30 dana, a taj rok se može produžiti za još 60 dana kada je to neophodno, o čemu ćete biti obavešteni.`,
+                    'Imate pravo da podnesete pritužbu Povereniku za informacije od javnog značaja i zaštitu podataka o ličnosti Republike Srbije (www.poverenik.rs).',
                 ],
             },
             {
-                title: '10. Obaveznost podataka i automatizovano odlučivanje',
+                title: '9. Obaveznost podataka i automatizovano odlučivanje',
                 paragraphs: [
-                    'Dostavljanje podataka kroz web formu je dobrovoljno, ali bez potrebnih kontakt podataka ne možemo odgovoriti na upit. Podaci zahtevani propisom, carinskim postupkom ili ugovorom mogu biti neophodni za pružanje konkretne usluge.',
-                    'Ne vršimo automatizovano donošenje odluka koje proizvodi pravno ili slično značajno dejstvo po lica.',
+                    'Slanje podataka kroz formu je dobrovoljno i nije zakonska ni ugovorna obaveza, ali bez podataka označenih kao obavezni na upit nije moguće odgovoriti.',
+                    'Odluke se ne donose isključivo automatizovanom obradom, uključujući profilisanje, koje bi proizvodile pravne posledice ili na sličan način značajno uticale na vas.',
+                    'Podaci zahtevani propisom, carinskim postupkom ili ugovorom mogu biti neophodni za pružanje konkretne usluge.',
                 ],
             },
             {
-                title: '11. Bezbednost i izmene politike',
+                title: '10. Bezbednost i maloletnici',
                 paragraphs: [
-                    'Primenjujemo razumne tehničke i organizacione mere zaštite primerene prirodi podataka i riziku, ali nijedan sistem prenosa ili čuvanja nije potpuno bez rizika.',
-                    'Politika može biti izmenjena kada se promene usluge, propisi ili korišćeni sistemi. Važeća verzija i datum poslednjeg ažuriranja biće dostupni u ovom prozoru.',
+                    'Primenjuju se razumne tehničke i organizacione mere zaštite, ali nijedan prenos preko interneta ni sistem čuvanja nije potpuno bez rizika.',
+                    'Sajt nije namenjen tome da deca samostalno šalju podatke. Ako smatrate da je maloletno lice poslalo podatke bez odgovarajuće saglasnosti, javite se radi provere i brisanja.',
+                ],
+            },
+            {
+                title: '11. Izmene politike',
+                paragraphs: [
+                    'Ova politika može biti izmenjena kada se promene funkcije sajta, korišćeni servisi ili propisi. Važeća verzija i datum poslednjeg ažuriranja nalaze se na ovoj stranici.',
                 ],
             },
         ],
