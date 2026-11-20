@@ -11,7 +11,12 @@ import path from 'node:path'
 import puppeteer from 'puppeteer'
 
 const distDir = path.resolve('dist')
+const host = '127.0.0.1'
 const port = 4319
+// Vite's preload helper writes absolute <link rel="modulepreload"> URLs
+// (import.meta.resolve), so the serialized HTML would point visitors at this
+// local server. Every such URL is rewritten to a root-relative path.
+const origin = `http://${host}:${port}`
 const routes = ['/', '/o-nama', '/usluge', '/kontakt', '/politika-privatnosti', '/uslovi-koriscenja']
 
 const mimeTypes = {
@@ -60,7 +65,7 @@ function startServer() {
     }
   })
   return new Promise((resolve) => {
-    server.listen(port, '127.0.0.1', () => resolve(server))
+    server.listen(port, host, () => resolve(server))
   })
 }
 
@@ -82,9 +87,12 @@ async function main() {
       const page = await browser.newPage()
       // 'domcontentloaded' only: the muted autoplay hero video never reaches
       // network-idle, so waiting for network silence would hang forever.
-      await page.goto(`http://127.0.0.1:${port}${route}`, { waitUntil: 'domcontentloaded' })
+      await page.goto(`${origin}${route}`, { waitUntil: 'domcontentloaded' })
       await page.waitForSelector('link[rel="canonical"]', { timeout: 15000 })
-      const html = await page.content()
+      const html = (await page.content()).replaceAll(`${origin}/`, '/')
+      if (html.includes(origin)) {
+        throw new Error(`${route}: rendered HTML still references ${origin}`)
+      }
       rendered.set(route, `<!doctype html>\n${html}`)
       await page.close()
       console.log(`prerendered ${route}`)
