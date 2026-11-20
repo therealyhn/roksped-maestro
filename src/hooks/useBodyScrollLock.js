@@ -1,24 +1,20 @@
 import {useEffect} from 'react'
 
+// The page scrolls on <html> (its overflow-x: clip stops body overflow from reaching the
+// viewport), so the lock goes there. No padding compensation: it showed as an empty strip.
 export default function useBodyScrollLock(isLocked) {
   useEffect(() => {
     if (!isLocked) {
       return undefined
     }
 
-    const {body} = document
-    const previousOverflow = body.style.overflow
-    const previousPaddingRight = body.style.paddingRight
-    const scrollbarWidth = window.innerWidth - body.clientWidth
+    const root = document.documentElement
+    const previousOverflow = root.style.overflow
 
-    body.style.overflow = 'hidden'
-    if (scrollbarWidth > 0) {
-      body.style.paddingRight = `${scrollbarWidth}px`
-    }
+    root.style.overflow = 'hidden'
 
     return () => {
-      body.style.overflow = previousOverflow
-      body.style.paddingRight = previousPaddingRight
+      root.style.overflow = previousOverflow
     }
   }, [isLocked])
 }

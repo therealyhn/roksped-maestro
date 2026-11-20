@@ -11,7 +11,7 @@ function SiteHeader() {
 
   return (
     <header className="pointer-events-none fixed inset-x-0 top-4 z-50 px-gutter-fluid sm:top-6">
-      <div className="pointer-events-auto relative mx-auto flex h-[52px] w-full max-w-[865px] items-center rounded-navigation bg-brand-glass px-4 shadow-navigation backdrop-blur-[4.55px] xs:px-[22px] sm:h-[59px] md:px-[35px]">
+      <div className="pointer-events-auto relative mx-auto flex h-[52px] w-full max-w-[700px] items-center rounded-navigation bg-brand-glass px-4 shadow-navigation backdrop-blur-[4.55px] xs:px-[22px] sm:h-[59px] md:px-[35px]">
         <DesktopNavigation items={items} />
 
         <NavLink aria-label="Rok Šped - početna" className="flex h-[30px] w-[48px] shrink-0 items-center md:absolute md:left-1/2 md:top-1/2 md:h-[37px] md:w-[60px] md:-translate-x-1/2 md:-translate-y-1/2" to="/">
