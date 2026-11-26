@@ -6,6 +6,14 @@ DirectorySlash Off
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
+  # Addresses of the previous site that Google still crawls (Search Console, 26.11.2026):
+  # one permanent hop to the matching page, before the HTTPS/www rule
+  RewriteRule ^(about|clients)/?$ https://www.roksped.rs/o-nama [NC,R=301,L]
+  RewriteRule ^contact/?$ https://www.roksped.rs/kontakt [NC,R=301,L]
+  RewriteRule ^(services|transport|logistika|carinsko-posredovanje)/?$ https://www.roksped.rs/usluge [NC,R=301,L]
+  RewriteCond %{THE_REQUEST} \s/index\.html[\s?]
+  RewriteRule ^index\.html$ https://www.roksped.rs/ [R=301,L]
+
   # Force HTTPS and the canonical www host
   RewriteCond %{HTTPS} off [OR]
   RewriteCond %{HTTP_HOST} ^roksped\.rs$ [NC]
