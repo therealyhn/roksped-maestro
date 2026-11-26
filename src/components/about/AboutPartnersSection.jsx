@@ -93,6 +93,28 @@ function PartnerLogoCard({partner, prefersReducedMotion}) {
   )
 }
 
+function NewWindowNote() {
+  return <span className="sr-only"> (otvara se u novom prozoru)</span>
+}
+
+function PartnerListItem({company}) {
+  return (
+    <li className="mb-[6px] break-inside-avoid px-1">
+      {company.url ? (
+        <a
+          className="underline decoration-source-input-border underline-offset-[3px] transition-colors duration-200 hover:text-brand-ink hover:decoration-brand-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-logistics-green motion-reduce:transition-none"
+          href={company.url}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          {company.name}
+          <NewWindowNote />
+        </a>
+      ) : company.name}
+    </li>
+  )
+}
+
 function AboutPartnersSection({section}) {
   const [activePartnerId, setActivePartnerId] = useState(null)
   const prefersReducedMotion = useReducedMotion()
@@ -120,21 +142,25 @@ function AboutPartnersSection({section}) {
               const isActive = activePartnerId === partnerId
               const isLastPartner = partnerIndex === row.length - 1
               const isLastRow = rowIndex === section.featuredRows.length - 1
+              // Firma sa sajtom je link (logo kartica i dalje iskače na hover i fokus), ostale ostaju dugme.
+              const Trigger = partner.url ? 'a' : 'button'
+              const triggerProps = partner.url
+                ? {href: partner.url, rel: 'noopener noreferrer', target: '_blank'}
+                : {'aria-expanded': isActive, onClick: () => setActivePartnerId(partnerId), type: 'button'}
 
               return (
                 <span className="relative inline-block" key={partnerId}>
-                  <button
-                    aria-expanded={isActive}
+                  <Trigger
+                    {...triggerProps}
                     className={`relative appearance-none border-0 bg-transparent p-0 font-[inherit] leading-[inherit] tracking-[inherit] transition-colors duration-300 motion-reduce:transition-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-logistics-green ${
                       !hasActivePartner || isActive ? 'text-brand-ink' : 'text-[#d9d9d9]'
                     }`}
                     onBlur={() => setActivePartnerId(null)}
-                    onClick={() => setActivePartnerId(partnerId)}
                     onFocus={() => setActivePartnerId(partnerId)}
                     onMouseEnter={() => setActivePartnerId(partnerId)}
-                    type="button"
                   >
                     {partner.name}
+                    {partner.url && <NewWindowNote />}
                     <AnimatePresence initial={false}>
                       {isActive && (
                         <PartnerLogoCard
@@ -144,7 +170,7 @@ function AboutPartnersSection({section}) {
                         />
                       )}
                     </AnimatePresence>
-                  </button>
+                  </Trigger>
                   <span
                     aria-hidden="true"
                     className={`transition-colors duration-300 motion-reduce:transition-none ${
@@ -161,8 +187,8 @@ function AboutPartnersSection({section}) {
       </h2>
 
       <ul className="mx-auto mt-16 max-w-[484px] columns-2 gap-2 text-center text-[14px] leading-[1.1] tracking-[-0.04em] text-source-metadata-muted [column-rule:1px_solid_theme(colors.source.neutral-light)] sm:max-w-[640px] sm:columns-4 lg:max-w-[900px] lg:columns-6 xl:absolute xl:left-1/2 xl:top-[438px] xl:mt-0 xl:w-[900px] xl:-translate-x-1/2">
-        {section.names.map((partner) => (
-          <li className="mb-[6px] break-inside-avoid px-1" key={partner}>{partner}</li>
+        {section.companies.map((company) => (
+          <PartnerListItem company={company} key={company.name} />
         ))}
       </ul>
     </section>
