@@ -1,18 +1,15 @@
 import {homeFigmaContent} from './homeFigmaContent.js'
 
-const teamPortraits = [
-  {image: '/assets/about/team-member-02.jpg', eyePosition: 'center 30%', portraitPosition: 'center 30%'},
-  {image: '/assets/about/team-member-01.jpg', eyePosition: 'center 35%', portraitPosition: 'center 30%'},
-  {image: '/assets/about/team-member-03.jpg', eyePosition: 'center 25%', portraitPosition: 'center 30%'},
-]
+// Silueta stoji dok Rok Šped ne pošalje fotografije članova tima; tada svaki član dobija svoju sliku.
+const teamPortraitPlaceholder = {image: '/assets/about/team-silhouette.svg', portraitPosition: 'center 30%'}
 
 const locationContacts = homeFigmaContent.locations.items.flatMap((location) => location.contacts)
 const vladimirContact = locationContacts.find((contact) => contact.name === 'Vladimir Dakić')
 const sladjanaContact = locationContacts.find((contact) => contact.name === 'Slađana Vasić')
 
 const locationTeamMembers = [
-  {...vladimirContact, id: vladimirContact.email, image: teamPortraits[0].image, portraitPosition: teamPortraits[0].portraitPosition, desktopOrder: 1},
-  {...sladjanaContact, id: sladjanaContact.email, image: teamPortraits[1].image, portraitPosition: teamPortraits[1].portraitPosition, desktopOrder: 3},
+  {...vladimirContact, id: vladimirContact.email, ...teamPortraitPlaceholder, desktopOrder: 1},
+  {...sladjanaContact, id: sladjanaContact.email, ...teamPortraitPlaceholder, desktopOrder: 3},
 ]
 
 export const aboutFigmaContent = Object.freeze({
@@ -56,9 +53,7 @@ export const aboutFigmaContent = Object.freeze({
         id: 'bojan-bojanic',
         name: 'Bojan Bojanić',
         role: 'Direktor',
-        image: '/assets/about/team-member-03.jpg',
-        eyePosition: 'center 27%',
-        portraitPosition: 'center 34%',
+        ...teamPortraitPlaceholder,
         desktopOrder: 2,
       },
       ...locationTeamMembers,
@@ -151,11 +146,14 @@ export const aboutFigmaContent = Object.freeze({
         rotation: 15,
       },
     ],
-    columns: [
-      ['Schwing Stetter', 'Matekawa', 'Mashtronics', 'Eurocem', 'Ks Safety Shoes'],
-      ['Eko Furnir', 'Profi Weld', 'Minimet', 'Stolarium Horeca', 'AGC'],
-      ['Deco Invest', 'Metal - Flex', 'Goek Color', 'RIO', 'Milanić'],
-      ['Nova Šumadija', 'Šrafko', 'Champicomp', 'Ekovald', 'Timotijević'],
+    // Abecedno (srpski redosled); kolone pravi CSS, pa nova firma ide samo na svoje mesto u nizu.
+    names: [
+      'AGC', 'Cable One', 'Champicomp', 'Dak Komerc', 'Deco Invest', 'Delta Agrar', 'Dragović Smederevo',
+      'Eko Furnir', 'Ekovald', 'EPS Rudnik Kovin', 'Eurocem', 'Fereneks', 'Gama Expo', 'Goek Color',
+      'Intermehanika', 'Isik Celik', 'Kebe Beograd', 'Komerc Mali Ruma', 'Ks Safety Shoes', 'Mashtronics',
+      'Matekawa', 'Metal - Flex', 'Metaling', 'Milanić', 'Minimet', 'Naka', 'NKK Jagodina', 'Nova Šumadija',
+      'Preymesser', 'Profi Weld', 'RIO', 'Schwing Stetter', 'Steelmex Beograd', 'Stolarium Horeca', 'Šrafko',
+      'Tehnograd Inženjering', 'Tim Tred Raška', 'Timotijević', 'Utva Silos Kovin', 'Wacker', 'Zijin',
     ],
   },
 })

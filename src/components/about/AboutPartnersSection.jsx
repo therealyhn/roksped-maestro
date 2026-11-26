@@ -160,13 +160,11 @@ function AboutPartnersSection({section}) {
         ))}
       </h2>
 
-      <div className="mx-auto mt-16 grid max-w-[484px] grid-cols-2 text-center text-[14px] leading-[1.1] tracking-[-0.04em] text-source-metadata-muted sm:grid-cols-4 xl:absolute xl:left-1/2 xl:top-[438px] xl:mt-0 xl:h-[99px] xl:w-[484px] xl:-translate-x-1/2">
-        {section.columns.map((column, index) => (
-          <ul className={`space-y-[6px] px-1 ${index < section.columns.length - 1 ? 'border-r border-source-neutral-light' : ''}`} key={column[0]}>
-            {column.map((partner) => <li key={partner}>{partner}</li>)}
-          </ul>
+      <ul className="mx-auto mt-16 max-w-[484px] columns-2 gap-2 text-center text-[14px] leading-[1.1] tracking-[-0.04em] text-source-metadata-muted [column-rule:1px_solid_theme(colors.source.neutral-light)] sm:max-w-[640px] sm:columns-4 lg:max-w-[900px] lg:columns-6 xl:absolute xl:left-1/2 xl:top-[438px] xl:mt-0 xl:w-[900px] xl:-translate-x-1/2">
+        {section.names.map((partner) => (
+          <li className="mb-[6px] break-inside-avoid px-1" key={partner}>{partner}</li>
         ))}
-      </div>
+      </ul>
     </section>
   )
 }
