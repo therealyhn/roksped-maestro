@@ -8,46 +8,11 @@ const partnerCardTransition = {
 }
 
 function PartnerLogo({partner}) {
-  if (partner.id === 'masterline') {
-    return (
-      <span aria-hidden="true" className="relative block h-[58px] w-[126px]">
-        <span className="absolute left-[49px] top-0 block size-[28px] overflow-hidden rounded-full">
-          <img
-            alt=""
-            className="absolute left-[-52px] top-[-32px] h-[132px] w-[132px] max-w-none"
-            decoding="async"
-            draggable="false"
-            loading="lazy"
-            src="/assets/about/partners/masterline-source.png"
-          />
-        </span>
-        <img
-          alt=""
-          className="absolute bottom-[5px] left-[1px] h-[16px] w-[82px]"
-          decoding="async"
-          draggable="false"
-          loading="lazy"
-          src="/assets/about/partners/masterline-word-black.svg"
-        />
-        <img
-          alt=""
-          className="absolute bottom-[5px] right-0 h-[16px] w-[42px]"
-          decoding="async"
-          draggable="false"
-          loading="lazy"
-          src="/assets/about/partners/masterline-word-blue.svg"
-        />
-      </span>
-    )
-  }
-
   return (
     <img
       alt=""
       aria-hidden="true"
-      className={partner.id === 'akiba'
-        ? 'w-[94%] object-contain'
-        : 'max-h-[80%] max-w-[88%] object-contain'}
+      className="max-h-[80%] max-w-[88%] object-contain"
       decoding="async"
       draggable="false"
       loading="lazy"
