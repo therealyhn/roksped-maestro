@@ -16,11 +16,12 @@ DirectorySlash Off
   RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}/index.html -f
   RewriteRule ^(.*[^/])$ $1/index.html [L]
 
-  # SPA fallback for any other client-side route
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^ index.html [L]
+  # Every real route is prerendered (scripts/prerender.mjs), so anything else is not a page:
+  # no SPA fallback here, the ErrorDocument below answers with a real 404.
 </IfModule>
+
+# Unknown paths: status 404 for Google (no soft 404), body is the app, which renders NotFoundPage (noindex)
+ErrorDocument 404 /index.html
 
 <IfModule mod_headers.c>
   Header always set X-Content-Type-Options "nosniff"
