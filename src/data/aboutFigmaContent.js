@@ -157,7 +157,6 @@ export const aboutFigmaContent = Object.freeze({
     // Abecedno (srpski redosled); kolone pravi CSS, pa nova firma ide samo na svoje mesto u nizu.
     // url samo za sajt koji je proveren da pripada toj firmi (26.11.2026); bez url-a ime ostaje običan tekst.
     companies: [
-      {name: 'AGC'},
       {name: 'Akiba'},
       {name: 'Birotehna', url: 'https://birotehna.rs/'},
       {name: 'Cable One', url: 'https://cableone.rs/'},
@@ -196,7 +195,7 @@ export const aboutFigmaContent = Object.freeze({
       {name: 'Tehnograd Inženjering', url: 'https://tehnograd.rs/'},
       {name: 'Tim Tred Raška'},
       {name: 'Timotijević'},
-      {name: 'Wacker'},
+      {name: 'Wacker Neuson', url: 'https://www.wackerneuson.com/'},
       {name: 'Zijin', url: 'https://www.zijinmining.com/'},
     ],
   },
