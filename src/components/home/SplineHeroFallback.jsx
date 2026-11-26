@@ -1,6 +1,7 @@
 import {useState} from 'react'
 
-const heroPoster = '/assets/home/hero-spline-poster.webp'
+// Prvi kadar hero.mp4 (ffmpeg -frames:v 1, cwebp -q 80); posle nove verzije videa izvući ga ponovo pod novim imenom fajla (keš 1 godina).
+const heroPoster = '/assets/home/hero-poster.webp'
 const heroVideo = '/assets/home/hero.mp4'
 
 function shouldSkipVideo() {
